@@ -13,7 +13,8 @@
     "@wessberg/di-compiler": "^3.3.0",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "ts-loader": "^9.5.1"
   },
   "devDependencies": {
     "@types/node": "^20",
