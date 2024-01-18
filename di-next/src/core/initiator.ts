@@ -1,5 +1,5 @@
 import { DateTimeSource } from '../adapters/dateTimeSource';
-import { UuidGenerator } from '../adapters/uuidGenderator';
+import { UuidGenerator } from '../adapters/uuidGenerator';
 import { EventHandler } from '../effects/eventHandler';
 import { Logger } from '../effects/logger';
 import { Timer } from '../effects/timer';
