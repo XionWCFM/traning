@@ -7,8 +7,19 @@ const createJestConfig = nextJest({
 
 const config: Config = {
   coverageProvider: 'v8',
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  clearMocks: true,
+  coverageDirectory: 'coverage',
+  coveragePathIgnorePatterns: ['/node_modules/'],
+  roots: ['<rootDir>'],
+  collectCoverage: true,
+  testPathIgnorePatterns: ['/node_modules/'],
+  transformIgnorePatterns: ['/node_modules/', '\\.pnp\\.[^\\/]+$'],
+  testMatch: [
+    '**/__tests__/**/*.+(ts|tsx|js)',
+    '**/?(*.)+(test|spec).+(ts|tsx|js)',
+  ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
   },

@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --watch",
+    "test:all": "jest",
+    "push:origin": "git push origin $(git symbolic-ref --short HEAD)"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -29,6 +30,7 @@
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
