@@ -6,6 +6,6 @@ export const GET = async (request: Request) => {
     userId: 'udgsdmlkfs',
   };
   return new Response(JSON.stringify(user), {
-    status: 404,
+    status: 200,
   });
 };
