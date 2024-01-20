@@ -2,6 +2,7 @@ import React from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { UserTrackerPort } from '../application/ports/user-tracker';
 import { delay } from '@/src/@shared/utils/promise/delay';
+import { ENV } from '../../environment/env';
 
 export const useLogAdapter = (): UserTrackerPort => {
   const logMutation = useMutation({
@@ -19,6 +20,10 @@ export const useLogAdapter = (): UserTrackerPort => {
         eventProperty,
         eventTime: new Date().toISOString(),
         eventUser: {},
+        eventEnvironment: {
+          device: 'iphone',
+          environment: ENV.environemnt,
+        },
       };
     },
   };
