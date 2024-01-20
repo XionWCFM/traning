@@ -1,14 +1,11 @@
 import React from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { fetcher } from '@/src/@shared/effect/fetcher/fetcher';
 import { UserTrackerPort } from '../application/ports/user-tracker';
+import { delay } from '@/src/@shared/utils/promise/delay';
 
 export const useLogAdapter = (): UserTrackerPort => {
   const logMutation = useMutation({
-    mutationFn: async (logEvent: Record<string, any>) =>
-      fetcher.post('/log', {
-        body: JSON.stringify(logEvent),
-      }),
+    mutationFn: async (logEvent: Record<string, any>) => await delay(1000),
   });
 
   return {
