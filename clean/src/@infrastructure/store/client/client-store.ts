@@ -6,7 +6,7 @@ export type StoreType = AuthSliceState & MockSliceState;
 export type AuthSlice = StateCreator<StoreType, [], [], AuthSliceState>;
 export type MockSlice = StateCreator<StoreType, [], [], MockSliceState>;
 
-export const useStore = create<StoreType>()((...a) => ({
+export const useRootStore = create<StoreType>()((...a) => ({
   ...createAuthSlice(...a),
   ...createMockSlice(...a),
 }));

@@ -4,9 +4,9 @@ import { deepMerge } from '../../@shared/utils/object/deep-merge/deep-merge';
 type REST_API_METHOD = 'GET' | 'PATCH' | 'POST' | 'DELETE' | 'PUT';
 
 export class Fetcher {
-  accessToken: string;
-  option: RequestInit;
-  baseUrl: string;
+  private accessToken: string;
+  private option: RequestInit;
+  private baseUrl: string;
   constructor(config?: {
     baseUrl?: string;
     accessToken?: string;
@@ -74,12 +74,12 @@ export class Fetcher {
   setBaseUrl(newUrl: string) {
     this.baseUrl = newUrl;
   }
-  responseCheck(response: Response) {
+  private responseCheck(response: Response) {
     if (!response.ok) {
       throw new Error('fetch error');
     }
   }
-  async parseBody(response: Response) {
+  private async parseBody(response: Response) {
     const contentType = response.headers.get('Content-Type');
     if (contentType && contentType.includes('application/json')) {
       return await response.json();
