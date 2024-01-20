@@ -1,10 +1,12 @@
 'use client';
-import Image from 'next/image';
+
+import { useUserQuery } from '@/src/@infrastructure/store/server/api/user/use-user-query';
 
 export default function Home() {
+  const user = useUserQuery();
   return (
     <div className="">
-      <button onClick={() => {}}>이벤트 소싱 맛보기</button>
+      <div className="">{user.data.userName}</div>
     </div>
   );
 }

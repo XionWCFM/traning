@@ -90,7 +90,7 @@ export class Fetcher {
 }
 
 export const authFetcher = new Fetcher({
-  baseUrl: '',
+  baseUrl: 'http://localhost:3000',
   accessToken: 'example.token.access',
   option: {
     headers: {
@@ -100,7 +100,7 @@ export const authFetcher = new Fetcher({
 });
 
 export const fetcher = new Fetcher({
-  baseUrl: '',
+  baseUrl: 'http://localhost:3000',
   option: {
     headers: {
       'Content-type': 'application/json',
