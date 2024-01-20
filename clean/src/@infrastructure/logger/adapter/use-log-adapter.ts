@@ -1,17 +1,13 @@
-import React from 'react';
-import { useMutation } from '@tanstack/react-query';
 import { UserTrackerPort } from '../application/ports/user-tracker';
-import { delay } from '@/src/@shared/utils/promise/delay';
 import { ENV } from '../../environment/env';
+import { useLogRepository } from '../infrastructure/repository';
 
 export const useLogAdapter = (): UserTrackerPort => {
-  const logMutation = useMutation({
-    mutationFn: async (logEvent: Record<string, any>) => await delay(1000),
-  });
+  const api = useLogRepository();
 
   return {
     track: (logEvent) => {
-      logMutation.mutate(logEvent);
+      api.create.mutate(logEvent);
     },
     createLogEvent: (eventName, eventPath, eventProperty) => {
       return {
