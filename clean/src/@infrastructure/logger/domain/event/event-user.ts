@@ -1,4 +1,5 @@
 export type EventUser = {
+  type: 'login-user' | 'anonymous';
   userName: string;
   gender: string;
   age: string;
