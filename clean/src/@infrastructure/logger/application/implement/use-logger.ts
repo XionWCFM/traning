@@ -6,10 +6,11 @@ import { UserTracker } from '../ports/user-tracker';
 export const useLogger = (): UserTracker => {
   const { track, createLogEvent } = useLogAdapter();
   return {
-    track: (eventNameTuple, eventPathTuple, eventProperty) => {
+    track: (eventNameTuple, eventPathTuple, injectEventProperty) => {
       const service = new LoggerService();
       const eventName = service.tupleToStringName(eventNameTuple);
       const eventPath = service.tupleToStringPath(eventPathTuple);
+      const eventProperty = service.createEventProperty(injectEventProperty);
       const logEvent = createLogEvent(eventName, eventPath, eventProperty);
       track(logEvent);
       console.log('is side effect 😍 we success to logging');

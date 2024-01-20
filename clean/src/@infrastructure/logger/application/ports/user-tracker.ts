@@ -9,7 +9,7 @@ export type UserTrackerPort = {
   createLogEvent(
     eventName: UserEventName,
     eventPath: UserEventPath,
-    properties?: EventProperty,
+    properties: EventProperty,
   ): LogEvent;
 };
 

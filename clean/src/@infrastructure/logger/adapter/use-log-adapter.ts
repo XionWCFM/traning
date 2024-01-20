@@ -14,11 +14,11 @@ export const useLogAdapter = (): UserTrackerPort => {
     },
     createLogEvent: (eventName, eventPath, eventProperty) => {
       return {
-        eventName: 'traning_cta-button_click',
-        eventPath: 'traning_cart_bottom-sheet_login-button',
+        eventName,
+        eventPath,
+        eventProperty,
         eventTime: new Date().toISOString(),
         eventUser: {},
-        eventProperty: {},
       };
     },
   };
