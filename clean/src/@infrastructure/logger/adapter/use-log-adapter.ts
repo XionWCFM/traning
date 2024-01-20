@@ -1,4 +1,4 @@
-import { DeviceHelper } from '../../device-helper/device-helper';
+import { DeviceHelper } from '../../../@packages/device-helper/device-helper';
 import { UserTrackerPort } from '../application/ports/user-tracker';
 import { useLogRepository } from '../infrastructure/repository';
 
