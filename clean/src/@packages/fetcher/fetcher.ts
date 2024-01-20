@@ -81,10 +81,9 @@ export class Fetcher {
     }
   }
   private async parseBody(response: Response) {
-    const contentType = response.headers.get('Content-Type');
-    if (contentType && contentType.includes('application/json')) {
+    try {
       return await response.json();
-    } else {
+    } catch (e) {
       return await response.text();
     }
   }

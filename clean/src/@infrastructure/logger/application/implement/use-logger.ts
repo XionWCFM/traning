@@ -1,3 +1,4 @@
+'use client';
 import { useLogAdapter } from '../../adapter/use-log-adapter';
 import { LoggerService } from '../../domain/service/logger-service';
 import { UserTracker } from '../ports/user-tracker';

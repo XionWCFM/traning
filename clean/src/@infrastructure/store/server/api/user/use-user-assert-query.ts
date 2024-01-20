@@ -7,7 +7,7 @@ import { assert } from '@/src/@packages/assert';
 
 export const useUserAssertQuery = () => {
   return useSuspenseQuery<User | null>({
-    queryKey: USER_KEY.all,
+    queryKey: USER_KEY.assert,
     queryFn: async () => {
       const result = await authFetcher.get('/api/user');
       assert(result !== null);

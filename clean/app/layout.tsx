@@ -2,7 +2,6 @@ import '@/src/@shared/style/globals.css';
 
 import type { Metadata } from 'next';
 import { QueryProvider } from '@/src/@infrastructure/store/server/query-provider';
-import { ErrorBoundary } from '@suspensive/react';
 import React from 'react';
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,11 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ErrorBoundary fallback={<div>hi</div>}>
-          <React.Suspense fallback={<div>loading</div>}>
-            <QueryProvider>{children}</QueryProvider>
-          </React.Suspense>
-        </ErrorBoundary>
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

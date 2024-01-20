@@ -6,7 +6,7 @@ import { User } from '@/src/@apps/user/domain';
 
 export const useUserQuery = () => {
   return useSuspenseQuery<User | null>({
-    queryKey: USER_KEY.all,
+    queryKey: USER_KEY.safe,
     queryFn: async () => {
       try {
         const result = await authFetcher.get('/api/user');

@@ -1,10 +1,9 @@
-export type EventUser = {
-  type: 'login-user' | 'anonymous';
-  userName: string;
-  gender: string;
-  age: string;
-  id: UniqueId;
-  device: string;
-  isLogin: boolean;
-  environment: string;
-};
+export type EventUser =
+  | ({
+      type: 'login-user';
+      isLogin: boolean;
+    } & Record<string, any>)
+  | ({
+      type: 'anonymous';
+      isLogin: boolean;
+    } & Record<string, any>);
