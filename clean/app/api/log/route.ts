@@ -1,9 +1,9 @@
 export const POST = async (request: Request) => {
-  console.log(request);
+  const body = await request.json();
   return new Response(
     JSON.stringify({
       status: 'success',
-      receive: request.body,
+      receive: body,
     }),
     {
       status: 201,
