@@ -1,3 +1,4 @@
+import { ENV } from '@/src/@environment/env';
 import { DeepPartial } from '../../@shared/types/deep-partial';
 import { deepMerge } from '../../@shared/utils/object/deep-merge/deep-merge';
 
@@ -90,7 +91,7 @@ export class Fetcher {
 }
 
 export const authFetcher = new Fetcher({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: ENV.baseUrl,
   accessToken: 'example.token.access',
   option: {
     headers: {
@@ -100,7 +101,7 @@ export const authFetcher = new Fetcher({
 });
 
 export const fetcher = new Fetcher({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: ENV.baseUrl,
   option: {
     headers: {
       'Content-type': 'application/json',

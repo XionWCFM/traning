@@ -1,3 +1,4 @@
+'use client';
 import { User } from '@/src/@apps/user/domain';
 import { authFetcher } from '@/src/@packages/fetcher/fetcher';
 import { useSuspenseQuery } from '@tanstack/react-query';

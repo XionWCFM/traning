@@ -1,11 +1,20 @@
 'use client';
 import React from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from './server-store';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 export const QueryProvider = ({ children }: React.PropsWithChildren) => {
+  const [queryClientState] = React.useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            throwOnError: true,
+          },
+        },
+      }),
+  );
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClientState}>
       {children}
       <ReactQueryDevtools initialIsOpen />
     </QueryClientProvider>

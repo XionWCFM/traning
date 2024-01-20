@@ -1,3 +1,4 @@
+'use client';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { USER_KEY } from './factory';
 import { authFetcher } from '@/src/@packages/fetcher/fetcher';
