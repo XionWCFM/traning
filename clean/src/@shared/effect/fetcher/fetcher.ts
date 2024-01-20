@@ -20,20 +20,20 @@ export class Fetcher {
       },
     });
   }
-  async get(endPoint: string, option: RequestInit) {
-    return await this.fetching(endPoint, option, 'GET');
+  async get(endPoint: string, option?: RequestInit) {
+    return await this.fetching(endPoint, option ?? {}, 'GET');
   }
-  async post(endPoint: string, option: RequestInit) {
-    return await this.fetching(endPoint, option, 'POST');
+  async post(endPoint: string, option?: RequestInit) {
+    return await this.fetching(endPoint, option ?? {}, 'POST');
   }
-  async delete(endPoint: string, option: RequestInit) {
-    return await this.fetching(endPoint, option, 'DELETE');
+  async delete(endPoint: string, option?: RequestInit) {
+    return await this.fetching(endPoint, option ?? {}, 'DELETE');
   }
-  async put(endPoint: string, option: RequestInit) {
-    return await this.fetching(endPoint, option, 'PUT');
+  async put(endPoint: string, option?: RequestInit) {
+    return await this.fetching(endPoint, option ?? {}, 'PUT');
   }
-  async patch(endPoint: string, option: RequestInit) {
-    return await this.fetching(endPoint, option, 'PATCH');
+  async patch(endPoint: string, option?: RequestInit) {
+    return await this.fetching(endPoint, option ?? {}, 'PATCH');
   }
 
   private async fetching(
