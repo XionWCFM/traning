@@ -3,7 +3,6 @@ import { authFetcher } from '@/src/@packages/fetcher/fetcher';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { USER_KEY } from './factory';
 import { assert } from '@/src/@packages/assert';
-import { nonNullable } from '@/src/@shared/types/non-nullable';
 
 export const useUserAssertQuery = () => {
   return useSuspenseQuery<User | null>({
