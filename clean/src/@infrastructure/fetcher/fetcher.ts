@@ -1,5 +1,5 @@
-import { DeepPartial } from '../../types/deep-partial';
-import { deepMerge } from '../../utils/object/deep-merge/deep-merge';
+import { DeepPartial } from '../../@shared/types/deep-partial';
+import { deepMerge } from '../../@shared/utils/object/deep-merge/deep-merge';
 
 type REST_API_METHOD = 'GET' | 'PATCH' | 'POST' | 'DELETE' | 'PUT';
 

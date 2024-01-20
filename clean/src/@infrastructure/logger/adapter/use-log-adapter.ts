@@ -1,5 +1,4 @@
 import { UserTrackerPort } from '../application/ports/user-tracker';
-import { ENV } from '../../environment/env';
 import { useLogRepository } from '../infrastructure/repository';
 
 export const useLogAdapter = (): UserTrackerPort => {
@@ -7,7 +6,7 @@ export const useLogAdapter = (): UserTrackerPort => {
 
   return {
     track: (logEvent) => {
-      api.create.mutate(logEvent);
+      api.create(logEvent);
     },
     createLogEvent: (eventName, eventPath, eventProperty) => {
       return {
@@ -18,7 +17,7 @@ export const useLogAdapter = (): UserTrackerPort => {
         eventUser: {},
         eventEnvironment: {
           device: 'iphone',
-          environment: ENV.environemnt,
+          environment: process.env.NODE_ENV,
         },
       };
     },

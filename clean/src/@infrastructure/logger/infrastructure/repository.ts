@@ -8,6 +8,8 @@ export const useLogRepository = () => {
     },
   });
   return {
-    create,
+    create: (log: any) => {
+      return create.mutateAsync(log);
+    },
   };
 };
