@@ -5,5 +5,7 @@ export const GET = async (request: Request) => {
     userName: 'umjoonsick',
     userId: 'udgsdmlkfs',
   };
-  return Response.json(user);
+  return new Response(JSON.stringify(user), {
+    status: 404,
+  });
 };

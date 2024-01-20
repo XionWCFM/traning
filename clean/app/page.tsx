@@ -4,6 +4,7 @@ import { useUserQuery } from '@/src/@infrastructure/store/server/api/user/use-us
 
 export default function Home() {
   const user = useUserQuery();
+  if (user.data === null) return null;
   return (
     <div className="">
       <div className="">{user.data.userName}</div>
