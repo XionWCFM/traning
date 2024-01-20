@@ -1,4 +1,4 @@
-class DeviceHelper {
+export class DeviceHelper {
   ios: RegExp;
   android: RegExp;
   constructor() {
@@ -23,5 +23,17 @@ class DeviceHelper {
       !this.android.test(navigator.userAgent) &&
       !this.ios.test(navigator.userAgent)
     );
+  }
+  getDevice() {
+    if (this.isIos()) {
+      return 'ios';
+    }
+    if (this.isAndroid()) {
+      return 'android';
+    }
+    if (this.isWeb()) {
+      return 'web';
+    }
+    return 'unknown';
   }
 }

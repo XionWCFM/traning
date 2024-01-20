@@ -1,3 +1,4 @@
+import { DeviceHelper } from '../../device-helper/device-helper';
 import { UserTrackerPort } from '../application/ports/user-tracker';
 import { useLogRepository } from '../infrastructure/repository';
 
@@ -9,6 +10,7 @@ export const useLogAdapter = (): UserTrackerPort => {
       api.create(logEvent);
     },
     createLogEvent: (eventName, eventPath, eventProperty) => {
+      const deviceHelper = new DeviceHelper();
       return {
         eventName,
         eventPath,
@@ -16,7 +18,7 @@ export const useLogAdapter = (): UserTrackerPort => {
         eventTime: new Date().toISOString(),
         eventUser: {},
         eventEnvironment: {
-          device: 'iphone',
+          device: deviceHelper.getDevice(),
           environment: process.env.NODE_ENV,
         },
       };
