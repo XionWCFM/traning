@@ -25,7 +25,7 @@ export class PubSubManager<Event extends EventName<string>> {
   initiate(handlerObject: {
     [K in EventName<Event>]?: Array<EventHandler<Event>>;
   }) {
-    const entries = objectEntries(this.subscribers);
+    const entries = objectEntries(handlerObject);
     entries.forEach(([eventType, handlers]) => {
       handlers?.forEach((handler) => {
         this.subscribe(eventType, handler);
