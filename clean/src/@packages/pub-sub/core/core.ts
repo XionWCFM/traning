@@ -13,6 +13,13 @@ export class PubSubManager<Event extends EventCreator<string, {}>> {
     this.subscribers[eventType]?.push(handler);
   }
 
+  unsubscribe(eventType: Event['type'], handler: EventHandler<Event>) {
+    const handlers = this.subscribers[eventType];
+    if (handlers) {
+      this.subscribers[eventType] = handlers.filter((h) => h !== handler);
+    }
+  }
+
   publish(event: Event) {
     const handlers =
       this.subscribers?.[event?.type as unknown as Event['type']] || [];
