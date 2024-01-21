@@ -35,4 +35,8 @@ export class PubSubManager<Event extends EventCreator<string, {}>> {
       });
     });
   }
+
+  initialize() {
+    this.subscribers = {};
+  }
 }
