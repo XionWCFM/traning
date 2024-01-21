@@ -7,14 +7,18 @@ import { UserTracker } from '../ports/user-tracker';
 export const useLogger = (): UserTracker => {
   const { track, createLogEvent } = useLogAdapter();
   return {
-    track: (eventNameTuple, eventPathTuple, injectEventProperty) => {
+    track: async (eventNameTuple, eventPathTuple, injectEventProperty) => {
       const service = new LoggerService();
       const eventName = service.tupleToStringName(eventNameTuple);
       const eventPath = service.tupleToStringPath(eventPathTuple);
       const eventProperty = service.createEventProperty(injectEventProperty);
       const logEvent = createLogEvent(eventName, eventPath, eventProperty);
-      track(logEvent);
+      const result = await track(logEvent);
+      console.group('🥰 logger port side effect 😌');
       console.log('is side effect 😍 we success to logging');
+      console.log('this is api response data');
+      console.log(result);
+      console.groupEnd();
     },
   };
 };

@@ -8,7 +8,6 @@ export const useLogMutation = () => {
       const result = await fetcher.post(END_POINT.log, {
         body: JSON.stringify(log),
       });
-      console.log('log mutation', result);
       return result;
     },
   });

@@ -4,7 +4,7 @@ import { EventProperty } from '../../domain/event/event-property';
 import { LogEvent } from '../../domain/event/log-event';
 
 export type UserTrackerPort = {
-  track(log: LogEvent): void;
+  track(log: LogEvent): Promise<void> | Promise<any>;
 
   createLogEvent(
     eventName: UserEventName,
@@ -18,5 +18,5 @@ export type UserTracker = {
     eventName: EventNameTuple,
     eventPath: EventPathTuple,
     properties?: EventProperty,
-  ): void;
+  ): Promise<void> | Promise<any>;
 };

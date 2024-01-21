@@ -10,7 +10,7 @@ export const useLogAdapter = (): UserTrackerPort => {
   const log = useLogMutation();
   return {
     track: async (logEvent) => {
-      log.mutateAsync(logEvent);
+      return log.mutateAsync(logEvent);
     },
     createLogEvent: (eventName, eventPath, eventProperty) => {
       const isLogin = user.data !== null;
