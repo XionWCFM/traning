@@ -12,7 +12,7 @@ type EventHandler<
   Event extends EventCreator<string, {}> = EventCreator<string, {}>,
 > = (event: Event) => void;
 
-class PubSubManager<Event extends EventCreator<string, {}>> {
+export class PubSubManager<Event extends EventCreator<string, {}>> {
   private subscribers: {
     [eventType in Event['type']]?: Array<EventHandler<Event>>;
   } = {};
@@ -42,8 +42,3 @@ class PubSubManager<Event extends EventCreator<string, {}>> {
     });
   }
 }
-
-type SubjectEvent = { type: 'sub'; hello: 'world' };
-type ExampEvent = { type: 'bsd'; hal: 'wosa' };
-
-const pubsub = new PubSubManager<SubjectEvent | ExampEvent>();
