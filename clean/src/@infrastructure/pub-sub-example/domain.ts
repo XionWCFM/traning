@@ -1,6 +1,4 @@
+type CreateUserEvent = { type: 'CREATE_USER'; userName: string };
+type DeleteUserEvent = { type: 'DELETE_USER'; userId: string };
 
-type SubjectEvent = { type: 'sub'; hello: 'world' };
-type ExampEvent = { type: 'bsd'; hal: 'wosa' };
-
-export type MyEvent = SubjectEvent | ExampEvent;
-
+export type MyEvent = CreateUserEvent | DeleteUserEvent;
