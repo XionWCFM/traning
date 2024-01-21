@@ -1,16 +1,5 @@
 import { objectEntries } from '@/src/@shared/utils/object/object-entries';
-
-type EventName<Event> = Event extends string ? Event : never;
-
-type EventProperty<Prop> = Prop extends Record<string, any> ? Prop : never;
-
-type EventCreator<T = EventName<string>, P = EventProperty<{}>> = P & {
-  type: T;
-};
-
-type EventHandler<
-  Event extends EventCreator<string, {}> = EventCreator<string, {}>,
-> = (event: Event) => void;
+import { EventCreator, EventHandler, EventHandlersMap } from './type';
 
 export class PubSubManager<Event extends EventCreator<string, {}>> {
   private subscribers: {
@@ -31,9 +20,7 @@ export class PubSubManager<Event extends EventCreator<string, {}>> {
     handlers.forEach((handler) => handler(event));
   }
 
-  initiate(handlerObject: {
-    [K in Event['type']]?: Array<EventHandler<Event>>;
-  }) {
+  initiate(handlerObject: EventHandlersMap<Event>) {
     const entries = objectEntries(handlerObject);
     entries.forEach(([eventType, handlers]) => {
       handlers?.forEach((handler) => {
