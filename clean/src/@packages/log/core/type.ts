@@ -49,5 +49,5 @@ export type LogEvent<
   eventEnvironment: Environment;
   eventName: Name;
   eventPath: Path;
-  eventTime: '';
+  eventTime: string;
 };

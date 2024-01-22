@@ -1,31 +1,36 @@
-import { Logger } from '@/src/@packages/log/core/service';
-import { ACTION } from '@/src/@packages/logger/domain/atom/action';
-import { AT } from '@/src/@packages/logger/domain/atom/at';
-import { FEATURE } from '@/src/@packages/logger/domain/atom/feature';
-import { PAGE } from '@/src/@packages/logger/domain/atom/page';
-import { TARGET } from '@/src/@packages/logger/domain/atom/target';
+import { LoggerListener } from '@/src/@packages/log/core/listener';
+import { LoggerService } from '@/src/@packages/log/core/service';
+import {
+  LogEvent,
+  LogEventEnvironment,
+  LogEventName,
+  LogEventPath,
+  LogEventProperty,
+} from '@/src/@packages/log/core/type';
+import { ACTION } from '@/src/@infrastructure/logger/domain/atom/action';
+import { AT } from '@/src/@infrastructure/logger/domain/atom/at';
+import { FEATURE } from '@/src/@infrastructure/logger/domain/atom/feature';
+import { PAGE } from '@/src/@infrastructure/logger/domain/atom/page';
+import { TARGET } from '@/src/@infrastructure/logger/domain/atom/target';
 
-export const logger = new Logger<FEATURE, PAGE, AT, TARGET, ACTION>();
+export const logger = new LoggerService<FEATURE, PAGE, AT, TARGET, ACTION>();
 
-type MyLogger = typeof logger;
+type User = {
+  age: number;
+  isLogin: boolean;
+};
 
-type LoggerInfer<Instance> =
-  Instance extends Logger<
-    infer Feature,
-    infer Page,
-    infer At,
-    infer Target,
-    infer Action,
-    infer Glue
-  >
-    ? {
-        feature: Feature;
-        page: Page;
-        at: At;
-        target: Target;
-        action: Action;
-        glue: Glue;
-      }
-    : never;
+type Environment = LogEventEnvironment;
 
-type hi = LoggerInfer<typeof logger>;
+type Property = LogEventProperty;
+
+type Name = LogEventName<FEATURE, TARGET, ACTION>;
+
+type Path = LogEventPath<FEATURE, PAGE, AT, TARGET>;
+
+type MyLogEvent = LogEvent<Name, Path, User, Property, Environment>;
+
+const loggerListener = new LoggerListener<
+  typeof logger,
+  { type: 'logger_event_publish' } & MyLogEvent
+>();
