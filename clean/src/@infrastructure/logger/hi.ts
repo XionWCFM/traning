@@ -6,9 +6,18 @@ import { FEATURE } from '@/src/@infrastructure/logger/domain/atom/feature';
 import { PAGE } from '@/src/@infrastructure/logger/domain/atom/page';
 import { TARGET } from '@/src/@infrastructure/logger/domain/atom/target';
 import { MyLogEvent } from './domain/organism/log-event';
+import { LogCreator } from '@/src/@packages/log/core/creator';
 
-export const logger = new LoggerService<FEATURE, PAGE, AT, TARGET, ACTION>();
+export const loggerService = new LoggerService<
+  FEATURE,
+  PAGE,
+  AT,
+  TARGET,
+  ACTION
+>();
 
 export const loggerListener = new LoggerListener<
   { type: 'logger_event_publish' } & MyLogEvent
 >();
+
+export const logCreator = new LogCreator<MyLogEvent>(loggerService);
