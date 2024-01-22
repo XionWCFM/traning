@@ -14,8 +14,19 @@ const config: Config = {
   coveragePathIgnorePatterns: ['/node_modules/'],
   roots: ['<rootDir>'],
   collectCoverage: true,
-  testPathIgnorePatterns: ['/node_modules/'],
-  transformIgnorePatterns: ['/node_modules/', '\\.pnp\\.[^\\/]+$'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/.next/',
+    '/.swc/',
+    './coverage/',
+  ],
+  transformIgnorePatterns: [
+    '/node_modules/',
+    '\\.pnp\\.[^\\/]+$',
+    '/.next/',
+    '/.swc/',
+    './coverage/',
+  ],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
     '**/?(*.)+(test|spec).+(ts|tsx|js)',
