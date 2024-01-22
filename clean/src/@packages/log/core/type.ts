@@ -2,7 +2,7 @@ export type LogEventName<
   Feature extends string = string,
   Target extends string = string,
   Action extends string = string,
-  Glue extends string = string,
+  Glue extends string = '_',
 > = `${Feature}${Glue}${Target}${Glue}${Action}`;
 
 export type LogEventPath<
@@ -10,7 +10,7 @@ export type LogEventPath<
   Page extends string = string,
   At extends string = string,
   Target extends string = string,
-  Glue extends string = string,
+  Glue extends string = '_',
 > = `${Feature}${Glue}${Page}${Glue}${At}${Glue}${Target}`;
 
 export type LogEventNameTuple<

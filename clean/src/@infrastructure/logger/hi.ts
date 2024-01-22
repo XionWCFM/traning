@@ -6,5 +6,3 @@ import { PAGE } from '@/src/@packages/logger/domain/atom/page';
 import { TARGET } from '@/src/@packages/logger/domain/atom/target';
 
 export const logger = new Logger<FEATURE, PAGE, AT, TARGET, ACTION>();
-
-const a = logger.nameStringToTuple
