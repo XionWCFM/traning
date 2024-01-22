@@ -39,8 +39,8 @@ export type DefaultLogEventEnvironment = {
 export type LogEventUser<User extends Record<string, any> = {}> = User;
 
 export type LogEventParam<
-  Name extends LogEventName,
-  Path extends LogEventPath,
+  Name extends LogEventNameTuple,
+  Path extends LogEventPathTuple,
   User extends LogEventUser,
   Property extends LogEventProperty,
   Environment extends LogEventEnvironment,
@@ -55,8 +55,6 @@ export type LogEventParam<
 };
 
 export type LogEvent<
-  Name extends LogEventName,
-  Path extends LogEventPath,
   User extends LogEventUser,
   Property extends LogEventProperty | undefined,
   Environment extends LogEventEnvironment | undefined,
@@ -64,7 +62,7 @@ export type LogEvent<
   eventUser: User;
   eventProperty: Property;
   eventEnvironment: Environment & DefaultLogEventEnvironment;
-  eventName: Name;
-  eventPath: Path;
+  eventName: string;
+  eventPath: string;
   eventTime: string;
 };

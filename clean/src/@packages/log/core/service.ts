@@ -74,6 +74,18 @@ export class LoggerService<
       Target
     >;
   }
+  static createInferInstance<
+    T extends typeof LoggerService<string, string, string, string, string>,
+  >() {
+    return new LoggerService<
+      LoggerInfer<T>['feature'],
+      LoggerInfer<T>['page'],
+      LoggerInfer<T>['at'],
+      LoggerInfer<T>['target'],
+      LoggerInfer<T>['action'],
+      LoggerInfer<T>['glue']
+    >();
+  }
 }
 
 export type LoggerInfer<Instance> =

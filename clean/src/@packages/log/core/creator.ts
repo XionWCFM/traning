@@ -1,5 +1,6 @@
 import { DeviceHelper } from '../../device-helper/device-helper';
 import { EventCreator } from '../../pub-sub/core/type';
+import { LoggerService } from './service';
 import {
   DefaultLogEventEnvironment,
   LogEvent,
@@ -8,6 +9,13 @@ import {
 } from './type';
 
 export class LogEventCreator<
+  LoggerServiceInstance extends typeof LoggerService<
+    string,
+    string,
+    string,
+    string,
+    string
+  >,
   Event extends EventCreator<string, {}> = EventCreator<string, {}>,
 > {
   constructor() {}
@@ -37,9 +45,15 @@ export class LogEventCreator<
   }
 
   createLogEvent<
-    NewEvent extends LogEventParam<string, string, {}, {}, {}> = LogEventParam<
-      string,
-      string,
+    NewEvent extends LogEventParam<
+      [string, string, string],
+      [string, string, string, string],
+      {},
+      {},
+      {}
+    > = LogEventParam<
+      [string, string, string],
+      [string, string, string, string],
       {},
       {},
       {}
@@ -48,8 +62,6 @@ export class LogEventCreator<
     eventType: Event['type'],
     logEvent: NewEvent,
   ): { type: Event['type'] } & LogEvent<
-    NewEvent['eventName'],
-    NewEvent['eventPath'],
     NewEvent['eventUser'],
     NewEvent['eventProperty'],
     NewEvent['eventEnvironment']
@@ -59,13 +71,15 @@ export class LogEventCreator<
     );
     const eventProperty = this.createEventProperty(logEvent.eventProperty);
     const eventTime = new Date().toISOString();
+    const service = LoggerService.createInferInstance<LoggerServiceInstance>();
+
     return {
       type: eventType,
       eventEnvironment,
       eventProperty,
       eventTime,
-      eventName: logEvent.eventName,
-      eventPath: logEvent.eventPath,
+      eventName: service.nameTupleToString(logEvent.eventName),
+      eventPath: service.pathTupleToString(logEvent.eventPath),
       eventUser: logEvent.eventUser,
     };
   }
