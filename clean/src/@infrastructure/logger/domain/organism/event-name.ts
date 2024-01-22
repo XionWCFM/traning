@@ -1,4 +1,7 @@
-import { LogEventName, LogEventNameTuple } from '@/src/@packages/log/core/type';
+import {
+  LogEventName,
+  LogEventNameTuple,
+} from '@/src/@packages/logger/core/type';
 import { ACTION } from '../atom/action';
 import { FEATURE } from '../atom/feature';
 import { TARGET } from '../atom/target';
