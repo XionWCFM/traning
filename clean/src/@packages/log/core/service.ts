@@ -1,5 +1,7 @@
-import { PubSubManager } from '../../pub-sub/core/core';
+import { DeviceHelper } from '../../device-helper/device-helper';
 import {
+  LogEvent,
+  LogEventEnvironment,
   LogEventName,
   LogEventNameTuple,
   LogEventPath,

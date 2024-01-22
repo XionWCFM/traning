@@ -10,6 +10,5 @@ import { MyLogEvent } from './domain/organism/log-event';
 export const logger = new LoggerService<FEATURE, PAGE, AT, TARGET, ACTION>();
 
 export const loggerListener = new LoggerListener<
-  typeof logger,
   { type: 'logger_event_publish' } & MyLogEvent
 >();
