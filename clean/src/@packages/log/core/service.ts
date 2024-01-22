@@ -1,3 +1,4 @@
+import { PubSubManager } from '../../pub-sub/core/core';
 import {
   LogEventName,
   LogEventNameTuple,
@@ -94,3 +95,22 @@ export class Logger<
     >;
   }
 }
+
+export type LoggerInfer<Instance> =
+  Instance extends Logger<
+    infer Feature,
+    infer Page,
+    infer At,
+    infer Target,
+    infer Action,
+    infer Glue
+  >
+    ? {
+        feature: Feature;
+        page: Page;
+        at: At;
+        target: Target;
+        action: Action;
+        glue: Glue;
+      }
+    : never;
