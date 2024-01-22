@@ -58,8 +58,8 @@ export type LogEvent<
   Name extends LogEventName,
   Path extends LogEventPath,
   User extends LogEventUser,
-  Property extends LogEventProperty,
-  Environment extends LogEventEnvironment,
+  Property extends LogEventProperty | undefined,
+  Environment extends LogEventEnvironment | undefined,
 > = {
   eventUser: User;
   eventProperty: Property;

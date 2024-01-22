@@ -2,6 +2,7 @@ import { DeviceHelper } from '../../device-helper/device-helper';
 import { EventCreator } from '../../pub-sub/core/type';
 import {
   DefaultLogEventEnvironment,
+  LogEvent,
   LogEventEnvironment,
   LogEventParam,
 } from './type';
@@ -27,7 +28,9 @@ export class LogEventCreator<
       ...envObj,
     };
   }
-  createEventProperty(property: unknown) {
+  createEventProperty<T extends Record<string, any> = {}>(
+    property: unknown,
+  ): T | {} {
     if (property === null) return {};
     if (typeof property !== 'object') return {};
     return property;
@@ -44,5 +47,26 @@ export class LogEventCreator<
   >(
     eventType: Event['type'],
     logEvent: NewEvent,
-  ): { type: Event['type'] } & NewEvent {}
+  ): { type: Event['type'] } & LogEvent<
+    NewEvent['eventName'],
+    NewEvent['eventPath'],
+    NewEvent['eventUser'],
+    NewEvent['eventProperty'],
+    NewEvent['eventEnvironment']
+  > {
+    const eventEnvironment = this.createLogEnvironment(
+      logEvent.eventEnvironment,
+    );
+    const eventProperty = this.createEventProperty(logEvent.eventProperty);
+    const eventTime = new Date().toISOString();
+    return {
+      type: eventType,
+      eventEnvironment,
+      eventProperty,
+      eventTime,
+      eventName: logEvent.eventName,
+      eventPath: logEvent.eventPath,
+      eventUser: logEvent.eventUser,
+    };
+  }
 }
