@@ -1,7 +1,7 @@
 'use client';
-import { DeviceHelper } from '../../../@packages/device-helper/device-helper';
-import { useLogMutation } from '../../store/server/api/log/use-log-mutation';
-import { useUserQuery } from '../../store/server/api/user/use-user-query';
+import { DeviceHelper } from '../../device-helper/device-helper';
+import { useLogMutation } from '../../../@infrastructure/store/server/api/log/use-log-mutation';
+import { useUserQuery } from '../../../@infrastructure/store/server/api/user/use-user-query';
 import { UserTrackerPort } from '../application/ports/user-tracker';
 import { EventUser } from '../domain/event/event-user';
 

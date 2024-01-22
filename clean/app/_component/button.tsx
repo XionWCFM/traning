@@ -1,6 +1,6 @@
 'use client';
 
-import { useLogger } from '@/src/@infrastructure/logger/application/implement/use-logger';
+import { useLogger } from '@/src/@packages/logger/application/implement/use-logger';
 import { MyEvent } from '@/src/@infrastructure/pub-sub-example/domain';
 import { pubSubManager } from '@/src/@infrastructure/pub-sub-example/provider';
 import { useRootStore } from '@/src/@infrastructure/store/client/client-store';
