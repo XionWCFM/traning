@@ -1,7 +1,4 @@
-import { DeviceHelper } from '../../device-helper/device-helper';
 import {
-  LogEvent,
-  LogEventEnvironment,
   LogEventName,
   LogEventNameTuple,
   LogEventPath,
