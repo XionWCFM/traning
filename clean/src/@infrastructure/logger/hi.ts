@@ -16,8 +16,6 @@ export const loggerService = new LoggerService<
   ACTION
 >();
 
-export const loggerListener = new LoggerListener<
-  { type: 'logger_event_publish' } & MyLogEvent
->();
+export const loggerListener = new LoggerListener<MyLogEvent>();
 
 export const logCreator = new LogCreator<MyLogEvent>(loggerService);
