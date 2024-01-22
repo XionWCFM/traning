@@ -2,7 +2,7 @@ export type LogEventName<
   Feature extends string = string,
   Target extends string = string,
   Action extends string = string,
-  Glue extends string = '_',
+  Glue extends string = string,
 > = `${Feature}${Glue}${Target}${Glue}${Action}`;
 
 export type LogEventPath<
@@ -10,7 +10,7 @@ export type LogEventPath<
   Page extends string = string,
   At extends string = string,
   Target extends string = string,
-  Glue extends string = '_',
+  Glue extends string = string,
 > = `${Feature}${Glue}${Page}${Glue}${At}${Glue}${Target}`;
 
 export type LogEventNameTuple<
@@ -30,12 +30,29 @@ export type LogEventProperty<EventProp extends Record<string, any> = {}> =
   EventProp;
 
 export type LogEventEnvironment<Environment extends Record<string, any> = {}> =
-  Environment & {
-    device: string;
-    environment: string;
-  };
+  Environment;
 
+export type DefaultLogEventEnvironment = {
+  device: string;
+  environment: string;
+};
 export type LogEventUser<User extends Record<string, any> = {}> = User;
+
+export type LogEventParam<
+  Name extends LogEventName,
+  Path extends LogEventPath,
+  User extends LogEventUser,
+  Property extends LogEventProperty,
+  Environment extends LogEventEnvironment,
+> = {
+  eventUser: User;
+  eventName: Name;
+  eventPath: Path;
+
+  eventProperty?: Property;
+  eventEnvironment?: Environment;
+  eventTime?: string;
+};
 
 export type LogEvent<
   Name extends LogEventName,
@@ -46,7 +63,7 @@ export type LogEvent<
 > = {
   eventUser: User;
   eventProperty: Property;
-  eventEnvironment: Environment;
+  eventEnvironment: Environment & DefaultLogEventEnvironment;
   eventName: Name;
   eventPath: Path;
   eventTime: string;

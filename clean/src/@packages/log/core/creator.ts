@@ -1,17 +1,22 @@
 import { DeviceHelper } from '../../device-helper/device-helper';
 import { EventCreator } from '../../pub-sub/core/type';
+import {
+  DefaultLogEventEnvironment,
+  LogEventEnvironment,
+  LogEventParam,
+} from './type';
 
 export class LogEventCreator<
   Event extends EventCreator<string, {}> = EventCreator<string, {}>,
 > {
-  private deviceHelper: DeviceHelper;
-  constructor() {
-    this.deviceHelper = new DeviceHelper();
-  }
-  createLogEnvironment<EnvironmentObject extends Record<string, any> = {}>(
+  constructor() {}
+  createLogEnvironment<EnvironmentObject extends LogEventEnvironment = {}>(
     envObj?: EnvironmentObject,
-  ) {
-    const device = this.deviceHelper.getDevice();
+  ):
+    | (EnvironmentObject & DefaultLogEventEnvironment)
+    | DefaultLogEventEnvironment {
+    const deviceHelper = new DeviceHelper();
+    const device = deviceHelper.getDevice();
     const environment = process.env.NODE_ENV;
     if (!envObj) {
       return { device, environment };
@@ -28,5 +33,16 @@ export class LogEventCreator<
     return property;
   }
 
-  createLogEvent() {}
+  createLogEvent<
+    NewEvent extends LogEventParam<string, string, {}, {}, {}> = LogEventParam<
+      string,
+      string,
+      {},
+      {},
+      {}
+    >,
+  >(
+    eventType: Event['type'],
+    logEvent: NewEvent,
+  ): { type: Event['type'] } & NewEvent {}
 }
