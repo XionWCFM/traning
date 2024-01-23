@@ -1,5 +1,8 @@
 import { DeviceHelper } from '../../device-helper/device-helper';
 import {
+  LogAtomCreator,
+  LogEventCreator,
+  LogEventDetailCreator,
   LogEventName,
   LogEventNameTuple,
   LogEventPath,
@@ -12,11 +15,8 @@ import {
  * Feature , Page , At , Target, Action, Glue
  * Glue는 선택값이며 기본값은 "_"입니다.
  *
- * @template Feature - 로그 이벤트와 관련된 기능을 나타내는 문자열 타입입니다.
- * @template Page - 로그 이벤트가 발생한 페이지를 나타내는 문자열 타입입니다.
- * @template At - 로그 이벤트가 발생한 위치를 나타내는 문자열 타입입니다.
- * @template Target - 로그 이벤트의 대상을 나타내는 문자열 타입입니다.
- * @template Action - 로그 이벤트의 행동을 나타내는 문자열 타입입니다.
+ * @template EventDetail - 로그 이벤트의 유저, 환경 등을 나타냅니다 .
+ * @template LogAtom - 로그이벤트의 각 구성요소들을 의미합니다.
  * @template Glue - 로그 이벤트의 각 요소를 연결하는 구분자로 사용되는 문자열 타입입니다. 기본값은 '_' 입니다.
  *
  * @param {Glue} [config.defaultOptions.glue] - 로그 이벤트 요소를 연결할 때 사용할 구분자입니다.
@@ -24,11 +24,8 @@ import {
 
  */
 export class LoggerService<
-  Feature extends string,
-  Page extends string,
-  At extends string,
-  Target extends string,
-  Action extends string,
+  EventDetail extends LogEventDetailCreator<string, {}, {}, {}>,
+  LogAtom extends LogAtomCreator<string, string, string, string, string>,
   Glue extends string = '_',
 > {
   private glue: Glue;
@@ -41,38 +38,79 @@ export class LoggerService<
   }
 
   nameTupleToString(
-    tuple: [Feature, Target, Action] | readonly [Feature, Target, Action],
-  ): LogEventName<Feature, Target, Action> {
-    return tuple.join(this.glue) as LogEventName<Feature, Target, Action>;
+    tuple: readonly [LogAtom['feature'], LogAtom['target'], LogAtom['action']],
+  ): LogEventName<LogAtom['feature'], LogAtom['target'], LogAtom['action']> {
+    return tuple.join(this.glue) as LogEventName<
+      LogAtom['feature'],
+      LogAtom['target'],
+      LogAtom['action']
+    >;
   }
 
   pathTupleToString(
-    tuple: [Feature, Page, At, Target],
-  ): LogEventPath<Feature, Page, At, Target> {
-    return tuple.join(this.glue) as LogEventPath<Feature, Page, At, Target>;
+    tuple: readonly [
+      LogAtom['feature'],
+      LogAtom['page'],
+      LogAtom['at'],
+      LogAtom['target'],
+    ],
+  ): LogEventPath<
+    LogAtom['feature'],
+    LogAtom['page'],
+    LogAtom['at'],
+    LogAtom['target']
+  > {
+    return tuple.join(this.glue) as LogEventPath<
+      LogAtom['feature'],
+      LogAtom['page'],
+      LogAtom['at'],
+      LogAtom['target']
+    >;
   }
 
   nameStringToTuple(
-    eventName: LogEventName<Feature, Target, Action, Glue>,
-  ): LogEventNameTuple<Feature, Target, Action> {
+    eventName: LogEventName<
+      LogAtom['feature'],
+      LogAtom['target'],
+      LogAtom['action'],
+      Glue
+    >,
+  ): LogEventNameTuple<
+    LogAtom['feature'],
+    LogAtom['target'],
+    LogAtom['action']
+  > {
     return eventName.split(this.glue) as LogEventNameTuple<
-      Feature,
-      Target,
-      Action
+      LogAtom['feature'],
+      LogAtom['target'],
+      LogAtom['action']
     >;
   }
 
   pathStringToTuple(
-    eventPath: LogEventPath<Feature, Page, At, Target, Glue>,
-  ): LogEventPathTuple<Feature, Page, At, Target> {
+    eventPath: LogEventPath<
+      LogAtom['feature'],
+      LogAtom['page'],
+      LogAtom['at'],
+      LogAtom['target'],
+      Glue
+    >,
+  ): LogEventPathTuple<
+    LogAtom['feature'],
+    LogAtom['page'],
+    LogAtom['at'],
+    LogAtom['target']
+  > {
     return eventPath.split(this.glue) as LogEventPathTuple<
-      Feature,
-      Page,
-      At,
-      Target
+      LogAtom['feature'],
+      LogAtom['page'],
+      LogAtom['at'],
+      LogAtom['target']
     >;
   }
-  createLogEnvironment<T extends Record<string, any>>(envObj?: T) {
+  createLogEnvironment(
+    envObj?: Omit<EventDetail['eventEnvironment'], 'device' | 'environment'>,
+  ) {
     const deviceHelper = new DeviceHelper();
     const device = deviceHelper.getDevice();
     const environment = process.env.NODE_ENV;
@@ -85,49 +123,36 @@ export class LoggerService<
       ...envObj,
     };
   }
-  createLogEvent<
-    EventType extends string,
-    EventUser extends Record<string, any>,
-    EventProperty extends Record<string, any>,
-    EventEnvironment extends Record<string, any>,
-  >(event: {
-    type: EventType;
-    eventProperty?: EventProperty;
-    eventName: LogEventNameTuple<Feature, Target, Action>;
-    eventPath: LogEventPathTuple<Feature, Page, At, Target>;
-    eventUser: EventUser;
-    eventEnvironment?: EventEnvironment;
-  }) {
-    const eventEnvironment = this.createLogEnvironment<EventEnvironment>(
-      event.eventEnvironment,
-    );
+  createLogEvent(event: {
+    type: EventDetail['type'];
+    eventProperty?: EventDetail['eventProperty'];
+    eventName: LogEventNameTuple<
+      LogAtom['feature'],
+      LogAtom['target'],
+      LogAtom['action']
+    >;
+    eventPath: LogEventPathTuple<
+      LogAtom['feature'],
+      LogAtom['page'],
+      LogAtom['at'],
+      LogAtom['target']
+    >;
+    eventUser: EventDetail['eventUser'];
+    eventEnvironment?: EventDetail['eventEnvironment'];
+  }): LogEventCreator<EventDetail, LogAtom> {
+    const eventEnvironment = this.createLogEnvironment(event.eventEnvironment);
     const eventProperty = event.eventProperty ?? {};
     const eventTime = new Date().toISOString();
+    const eventName = this.nameTupleToString(event.eventName);
+    const eventPath = this.pathTupleToString(event.eventPath);
+    return {
+      eventEnvironment,
+      eventProperty,
+      eventTime,
+      eventName,
+      eventPath,
+      type: event.type,
+      eventUser: event.eventUser,
+    } as LogEventCreator<EventDetail, LogAtom>;
   }
 }
-
-// type: eventType,
-// eventEnvironment,
-// eventProperty,
-// eventTime,
-// eventName: this.loggerService.nameTupleToString(logEvent.eventName),
-// eventPath: this.loggerService.pathTupleToString(logEvent.eventPath),
-// eventUser: logEvent.eventUser,
-export type LoggerInfer<Instance> =
-  Instance extends LoggerService<
-    infer Feature,
-    infer Page,
-    infer At,
-    infer Target,
-    infer Action,
-    infer Glue
-  >
-    ? {
-        feature: Feature;
-        page: Page;
-        at: At;
-        target: Target;
-        action: Action;
-        glue: Glue;
-      }
-    : never;

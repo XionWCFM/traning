@@ -1,5 +1,3 @@
-import { EventCreator } from '../../pub-sub/core/type';
-
 export type LogEventName<
   Feature extends string = string,
   Target extends string = string,
@@ -35,12 +33,12 @@ export type LogEventEnvironment<Environment extends Record<string, any> = {}> =
   Environment;
 
 export type DefaultLogEventEnvironment = {
-  device: string;
-  environment: string;
+  device: 'ios' | 'android' | 'web' | 'unknown';
+  environment: 'development' | 'production' | 'test';
 };
 export type LogEventUser<User extends Record<string, any> = {}> = User;
 
-export type LogEventCreator<
+export type LogEventDetailCreator<
   EventType extends string,
   EventUser extends Record<string, any>,
   EventProperty extends Record<string, any>,
@@ -53,4 +51,26 @@ export type LogEventCreator<
     | (EventEnvironment & DefaultLogEventEnvironment)
     | DefaultLogEventEnvironment;
   eventTime: string;
+};
+
+export type LogAtomCreator<
+  Feature extends string,
+  Page extends string,
+  At extends string,
+  Target extends string,
+  Action extends string,
+> = {
+  feature: Feature;
+  page: Page;
+  at: At;
+  target: Target;
+  action: Action;
+};
+
+export type LogEventCreator<
+  T extends LogEventDetailCreator<string, {}, {}, {}>,
+  A extends LogAtomCreator<string, string, string, string, string>,
+> = T & {
+  eventName: LogEventName<A['feature'], A['target'], A['action']>;
+  eventPath: LogEventPath<A['feature'], A['page'], A['at'], A['target']>;
 };
