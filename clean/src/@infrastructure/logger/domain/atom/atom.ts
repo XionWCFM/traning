@@ -1,4 +1,4 @@
-import { LogAtomCreator } from '@/src/@packages/logger/core/type';
+import { LogAtomCreator } from '@/src/@packages/logger/@types/creator/log-atom-creator';
 import { ACTION } from './action';
 import { AT } from './at';
 import { FEATURE } from './feature';

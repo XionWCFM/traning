@@ -1,2 +1,2 @@
-import { LogEventEnvironment } from '@/src/@packages/logger/core/type';
+import { LogEventEnvironment } from '@/src/@packages/logger/@types/type';
 export type MyEventEnvironment = LogEventEnvironment;

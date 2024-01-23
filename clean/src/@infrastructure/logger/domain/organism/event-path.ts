@@ -1,7 +1,7 @@
 import {
   LogEventPath,
   LogEventPathTuple,
-} from '@/src/@packages/logger/core/type';
+} from '@/src/@packages/logger/@types/type';
 import { AT } from '../atom/at';
 import { FEATURE } from '../atom/feature';
 import { PAGE } from '../atom/page';

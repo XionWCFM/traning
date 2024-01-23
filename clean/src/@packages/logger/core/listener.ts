@@ -1,5 +1,7 @@
 import { PubSubManager } from '../../pub-sub/core/core';
-import { LogAtomCreator, LogEventCreator, LogEventDetailCreator } from './type';
+import { LogEventDetailCreator } from '../@types/creator/log-event-detail-creator';
+import { LogEventCreator } from '../@types/creator/log-event-creator';
+import { LogAtomCreator } from '../@types/creator/log-atom-creator';
 
 export class LoggerPubSubManager<
   Event extends LogEventCreator<

@@ -1,3 +1,3 @@
-import { LogEventProperty } from '@/src/@packages/logger/core/type';
+import { LogEventProperty } from '@/src/@packages/logger/@types/type';
 
 export type MyEventProperty = LogEventProperty;

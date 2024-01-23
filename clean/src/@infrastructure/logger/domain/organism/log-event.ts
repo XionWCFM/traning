@@ -1,7 +1,5 @@
-import {
-  LogEventCreator,
-  LogEventDetailCreator,
-} from '@/src/@packages/logger/core/type';
+import { LogEventDetailCreator } from '@/src/@packages/logger/@types/creator/log-event-detail-creator';
+import { LogEventCreator } from '@/src/@packages/logger/@types/creator/log-event-creator';
 import { MyAtom } from '../atom/atom';
 import { MyEventEnvironment } from './event-environment';
 import { MyEventProperty } from './event-property';
@@ -19,4 +17,3 @@ export type UserLogEvent = LogEventCreator<
   MyAtom,
   '_'
 >;
-
