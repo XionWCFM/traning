@@ -9,7 +9,7 @@ import { MyEventUser } from './event-user';
 
 type EventVariable = 'CREATE_USER' | 'UPDATE_USER';
 
-export type CreateUserLogEvent = LogEventCreator<
+export type UserLogEvent = LogEventCreator<
   LogEventDetailCreator<
     EventVariable,
     MyEventUser,
@@ -19,3 +19,4 @@ export type CreateUserLogEvent = LogEventCreator<
   MyAtom,
   '_'
 >;
+

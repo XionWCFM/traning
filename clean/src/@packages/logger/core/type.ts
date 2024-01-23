@@ -1,3 +1,5 @@
+import { LoggerService } from './service';
+
 export type LogEventName<
   Feature extends string = string,
   Target extends string = string,
@@ -75,3 +77,10 @@ export type LogEventCreator<
   eventName: LogEventName<A['feature'], A['target'], A['action'], Glue>;
   eventPath: LogEventPath<A['feature'], A['page'], A['at'], A['target'], Glue>;
 };
+
+export type LogParamCreator<
+  Service extends LoggerService<
+    LogEventDetailCreator<string, {}, {}, {}>,
+    LogAtomCreator<string, string, string, string, string>
+  >,
+> = Parameters<Service['createLogEvent']>['0'];

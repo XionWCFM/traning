@@ -108,7 +108,7 @@ export class LoggerService<
       LogAtom['target']
     >;
   }
-  createLogEnvironment(
+  protected createLogEnvironment(
     envObj?: Omit<EventDetail['eventEnvironment'], 'device' | 'environment'>,
   ) {
     const deviceHelper = new DeviceHelper();
