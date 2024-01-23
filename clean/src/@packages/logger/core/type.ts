@@ -70,7 +70,8 @@ export type LogAtomCreator<
 export type LogEventCreator<
   T extends LogEventDetailCreator<string, {}, {}, {}>,
   A extends LogAtomCreator<string, string, string, string, string>,
+  Glue extends string = string,
 > = T & {
-  eventName: LogEventName<A['feature'], A['target'], A['action']>;
-  eventPath: LogEventPath<A['feature'], A['page'], A['at'], A['target']>;
+  eventName: LogEventName<A['feature'], A['target'], A['action'], Glue>;
+  eventPath: LogEventPath<A['feature'], A['page'], A['at'], A['target'], Glue>;
 };
