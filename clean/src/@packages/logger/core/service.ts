@@ -5,9 +5,11 @@ import {
   LogEventPath,
   LogEventPathTuple,
 } from '../@types/type';
-import { LogEventDetailCreator } from '../@types/creator/log-event-detail-creator';
 import { LogEventCreator } from '../@types/creator/log-event-creator';
-import { LogAtomCreator } from '../@types/creator/log-atom-creator';
+import {
+  LogAtomDefault,
+  LogEventDetailDefault,
+} from '../@types/default/default-type';
 /**
  *
  *
@@ -24,8 +26,8 @@ import { LogAtomCreator } from '../@types/creator/log-atom-creator';
 
  */
 export class LoggerService<
-  EventDetail extends LogEventDetailCreator<string, {}, {}, {}>,
-  LogAtom extends LogAtomCreator<string, string, string, string, string>,
+  EventDetail extends LogEventDetailDefault,
+  LogAtom extends LogAtomDefault,
   Glue extends string = '_',
 > {
   private glue: Glue;
@@ -39,7 +41,7 @@ export class LoggerService<
 
   nameTupleToString(
     tuple: readonly [LogAtom['feature'], LogAtom['target'], LogAtom['action']],
-  ): LogEventName<LogAtom['feature'], LogAtom['target'], LogAtom['action']> {
+  ) {
     return tuple.join(this.glue) as LogEventName<
       LogAtom['feature'],
       LogAtom['target'],
@@ -54,12 +56,7 @@ export class LoggerService<
       LogAtom['at'],
       LogAtom['target'],
     ],
-  ): LogEventPath<
-    LogAtom['feature'],
-    LogAtom['page'],
-    LogAtom['at'],
-    LogAtom['target']
-  > {
+  ) {
     return tuple.join(this.glue) as LogEventPath<
       LogAtom['feature'],
       LogAtom['page'],
@@ -75,11 +72,7 @@ export class LoggerService<
       LogAtom['action'],
       Glue
     >,
-  ): LogEventNameTuple<
-    LogAtom['feature'],
-    LogAtom['target'],
-    LogAtom['action']
-  > {
+  ) {
     return eventName.split(this.glue) as LogEventNameTuple<
       LogAtom['feature'],
       LogAtom['target'],
@@ -95,12 +88,7 @@ export class LoggerService<
       LogAtom['target'],
       Glue
     >,
-  ): LogEventPathTuple<
-    LogAtom['feature'],
-    LogAtom['page'],
-    LogAtom['at'],
-    LogAtom['target']
-  > {
+  ) {
     return eventPath.split(this.glue) as LogEventPathTuple<
       LogAtom['feature'],
       LogAtom['page'],
