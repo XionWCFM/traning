@@ -7,4 +7,9 @@ import { LogParamCreator } from '@/src/@packages/logger/core/type';
 export const loggerService = new LoggerService<UserLogEvent, MyAtom>();
 export const loggerPubSub = new LoggerPubSubManager<UserLogEvent>();
 
-export type LogParama = LogParamCreator<typeof loggerService>;
+export type LogParam = LogParamCreator<typeof loggerService>;
+
+export const publishLogEvent = (log: LogParam) => {
+  const logEvent = loggerService.createLogEvent(log);
+  loggerPubSub.publish(logEvent);
+};
