@@ -5,7 +5,7 @@ export type LogNamePathCreator<
   Glue extends string = '_',
 > = {
   eventName: `${T['feature']}${Glue}${T['target']}${Glue}${T['action']}`;
-  eventNameTuple: [T['feature'], T['target'], T['action']];
+  eventNameTuple: readonly [T['feature'], T['target'], T['action']];
   eventPath: `${T['feature']}${Glue}${T['page']}${Glue}${T['at']}${Glue}${T['target']}`;
-  eventPathTuple: [T['feature'], T['page'], T['at'], T['target']];
+  eventPathTuple: readonly [T['feature'], T['page'], T['at'], T['target']];
 };
