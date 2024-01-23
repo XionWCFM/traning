@@ -1,6 +1,9 @@
 'use client';
 
-import { useLogger } from '@/src/@packages/logger/application/implement/use-logger';
+import {
+  loggerCreator,
+  loggerPubSubManager,
+} from '@/src/@infrastructure/logger/hi';
 import { MyEvent } from '@/src/@infrastructure/pub-sub-example/domain';
 import { pubSubManager } from '@/src/@infrastructure/pub-sub-example/provider';
 import { useRootStore } from '@/src/@infrastructure/store/client/client-store';
@@ -9,7 +12,6 @@ import React from 'react';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {}
 export const Button = (prop: ButtonProps) => {
-  const { track } = useLogger();
   const store = useRootStore();
 
   React.useEffect(() => {
@@ -23,14 +25,17 @@ export const Button = (prop: ButtonProps) => {
   return (
     <button
       onClick={() => {
+        const logEvent = loggerCreator.createLogEvent('logger_event_publish', {
+          eventUser: {},
+          eventName: ['dsa', 'd', 'fd'],
+          eventPath: ['asd', 'ds', 'sd', 'fd'],
+        });
+        loggerPubSubManager.publish(logEvent);
+
         console.group('이벤트를 봅시다');
         pubSubManager.publish({ type: 'CREATE_USER', userName: 'moonjae' });
 
         console.groupEnd();
-        track(
-          ['traning', 'cta-button', 'click'],
-          ['traning', 'cart', 'bottom-sheet', 'cta-button'],
-        );
       }}
       {...prop}
     >

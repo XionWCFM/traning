@@ -1,3 +1,4 @@
+import { DeviceHelper } from '../../device-helper/device-helper';
 import {
   LogEventName,
   LogEventNameTuple,
@@ -71,20 +72,47 @@ export class LoggerService<
       Target
     >;
   }
-  static createInferInstance<
-    T extends typeof LoggerService<string, string, string, string, string>,
-  >() {
-    return new LoggerService<
-      LoggerInfer<T>['feature'],
-      LoggerInfer<T>['page'],
-      LoggerInfer<T>['at'],
-      LoggerInfer<T>['target'],
-      LoggerInfer<T>['action'],
-      LoggerInfer<T>['glue']
-    >();
+  createLogEnvironment<T extends Record<string, any>>(envObj?: T) {
+    const deviceHelper = new DeviceHelper();
+    const device = deviceHelper.getDevice();
+    const environment = process.env.NODE_ENV;
+    if (!envObj) {
+      return { device, environment };
+    }
+    return {
+      device,
+      environment,
+      ...envObj,
+    };
+  }
+  createLogEvent<
+    EventType extends string,
+    EventUser extends Record<string, any>,
+    EventProperty extends Record<string, any>,
+    EventEnvironment extends Record<string, any>,
+  >(event: {
+    type: EventType;
+    eventProperty?: EventProperty;
+    eventName: LogEventNameTuple<Feature, Target, Action>;
+    eventPath: LogEventPathTuple<Feature, Page, At, Target>;
+    eventUser: EventUser;
+    eventEnvironment?: EventEnvironment;
+  }) {
+    const eventEnvironment = this.createLogEnvironment<EventEnvironment>(
+      event.eventEnvironment,
+    );
+    const eventProperty = event.eventProperty ?? {};
+    const eventTime = new Date().toISOString();
   }
 }
 
+// type: eventType,
+// eventEnvironment,
+// eventProperty,
+// eventTime,
+// eventName: this.loggerService.nameTupleToString(logEvent.eventName),
+// eventPath: this.loggerService.pathTupleToString(logEvent.eventPath),
+// eventUser: logEvent.eventUser,
 export type LoggerInfer<Instance> =
   Instance extends LoggerService<
     infer Feature,
