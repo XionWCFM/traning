@@ -10,4 +10,7 @@ export type LogAtomDefault = LogAtomCreator<
   string,
   string
 >;
-export type LogEventDefault = LogEventCreator<LogEventDetailDefault , LogAtomDefault>
+export type LogEventDefault = LogEventCreator<
+  LogEventDetailDefault,
+  LogAtomDefault
+>;
