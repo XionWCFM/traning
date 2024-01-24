@@ -1,4 +1,3 @@
-import { objectEntries } from '@/src/@shared/utils/object/object-entries';
 import { EventCreator, EventHandler, EventHandlersMap } from './type';
 
 export class PubSubManager<Event extends EventCreator<string, {}>> {
@@ -28,7 +27,10 @@ export class PubSubManager<Event extends EventCreator<string, {}>> {
   }
 
   initiate(handlerObject: EventHandlersMap<Event>) {
-    const entries = objectEntries(handlerObject);
+    const entries = Object.entries(handlerObject) as [
+      Event['type'],
+      EventHandlersMap<Event>[Event['type']],
+    ][];
     entries.forEach(([eventType, handlers]) => {
       handlers?.forEach((handler) => {
         this.subscribe(eventType, handler);
