@@ -10,5 +10,5 @@ export type PubSubEventHandler<T extends DefaultPubSubEvent> = (
 ) => void;
 
 export type PubSubEventHandlersMaps<Event extends DefaultPubSubEvent> = {
-  [K in Event['type']]?: Array<PubSubEventHandler<DefaultPubSubEvent>>;
+  [K in Event['type']]?: Array<PubSubEventHandler<Event>>;
 };

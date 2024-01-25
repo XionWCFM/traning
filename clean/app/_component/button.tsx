@@ -1,18 +1,22 @@
 'use client';
 
-import { useRootStore } from '@/src/@infrastructure/store/client/client-store';
 import React from 'react';
-import { publishLogEvent } from '@/src/@infrastructure/logger/domain';
-import { pubSubManager } from '@/src/@infrastructure/pub-sub-example/provider';
+import { logger } from './logger';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {}
 export const Button = (prop: ButtonProps) => {
   return (
     <button
       onClick={() => {
-        pubSubManager.publish({
-          type: 'CREATE_USER',
-          userName: 'ㄴㅇㅁㅇㄴㅁㅇ',
+        logger.publishLogEvent({
+          type: 'LOGGING_EVENT',
+          eventName: ['hello', 'button', 'click'],
+          eventPath: ['hello', 'main', 'popular-content', 'button'],
+          eventUser: {
+            age: 23,
+            isLogin: true,
+            userName: 'umjoonsikc',
+          },
         });
       }}
       {...prop}

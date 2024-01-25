@@ -58,7 +58,7 @@ export class Logger<
     };
   }
 
-  protected publishLogEvent(event: Event['logEventParam']) {
+  publishLogEvent(event: Event['logEventParam']) {
     const log = this.createLogEvent(event);
     return super.publish(log);
   }

@@ -1,3 +1,8 @@
+import {
+  PubSubEventHandler,
+  PubSubEventHandlersMaps,
+} from '../../pub-sub/core/type';
+
 export type LogEventCreator<
   Feature extends string,
   Page extends string,

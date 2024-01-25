@@ -19,7 +19,7 @@ type MyLoggingEvent = {
   };
 };
 
-type MyLogEvent = LogEventCreator<
+export type MyLogEvent = LogEventCreator<
   Feature,
   Page,
   At,
@@ -28,5 +28,3 @@ type MyLogEvent = LogEventCreator<
   MyLoggingEvent,
   Glue
 >;
-
-export const logger = new Logger<MyLogEvent>();
