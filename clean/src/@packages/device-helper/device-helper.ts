@@ -2,9 +2,6 @@ export class DeviceHelper {
   ios: RegExp;
   android: RegExp;
   constructor() {
-    if (typeof window === 'undefined') {
-      throw new Error('웹 환경에서만 사용해주세요');
-    }
     this.ios = /iPhone|IPad|IPod/i;
     this.android = /Android/i;
   }
@@ -13,15 +10,24 @@ export class DeviceHelper {
     return typeof window !== 'undefined';
   }
   isIos(): boolean {
-    return this.ios.test(navigator.userAgent);
+    if (this.isClient()) {
+      return false;
+    }
+    return this.ios.test(navigator?.userAgent);
   }
   isAndroid(): boolean {
-    return this.android.test(navigator.userAgent);
+    if (this.isClient()) {
+      return false;
+    }
+    return this.android.test(navigator?.userAgent);
   }
   isWeb(): boolean {
+    if (this.isClient()) {
+      return false;
+    }
     return (
-      !this.android.test(navigator.userAgent) &&
-      !this.ios.test(navigator.userAgent)
+      !this.android.test(navigator?.userAgent) &&
+      !this.ios.test(navigator?.userAgent)
     );
   }
   getDevice() {
