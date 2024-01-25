@@ -1,13 +1,17 @@
 import { DeviceHelper } from '../../device-helper/device-helper';
-import { DefaultLogType } from '../@types/type';
+import { PubSubManager } from '../../pub-sub/core/core';
+import { DefaultLogEventType } from '../@types/type';
 
-export class LoggerService<Event extends DefaultLogType = DefaultLogType> {
+export class Logger<
+  Event extends DefaultLogEventType = DefaultLogEventType,
+> extends PubSubManager<Event['logEvent']> {
   private glue: Event['glue'];
   constructor(config?: {
     defaultOptions?: {
       glue?: Event['glue'];
     };
   }) {
+    super();
     this.glue = config?.defaultOptions?.glue ?? ('_' as Event['glue']);
   }
 
@@ -38,7 +42,8 @@ export class LoggerService<Event extends DefaultLogType = DefaultLogType> {
   protected createEventTime(date: Date) {
     return date.toISOString();
   }
-  createLogEvent(event: Event['logEventParam']): Event['logEvent'] {
+
+  protected createLogEvent(event: Event['logEventParam']): Event['logEvent'] {
     const eventEnvironment = this.createEventEnvironment();
     const eventTime = this.createEventTime(new Date());
     const eventName = this.nameTupleToString(event.eventName);
@@ -51,5 +56,10 @@ export class LoggerService<Event extends DefaultLogType = DefaultLogType> {
       eventName,
       eventPath,
     };
+  }
+
+  protected publishLogEvent(event: Event['logEventParam']) {
+    const log = this.createLogEvent(event);
+    return super.publish(log);
   }
 }

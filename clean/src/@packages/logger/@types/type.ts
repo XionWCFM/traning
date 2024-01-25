@@ -1,4 +1,4 @@
-export type LogTypeCreator<
+export type LogEventCreator<
   Feature extends string,
   Page extends string,
   At extends string,
@@ -36,7 +36,7 @@ export type LogTypeCreator<
   } & AnotherObj;
 };
 
-export type DefaultLogType = LogTypeCreator<
+export type DefaultLogEventType = LogEventCreator<
   string,
   string,
   string,
