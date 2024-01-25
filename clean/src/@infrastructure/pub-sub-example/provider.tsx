@@ -9,13 +9,17 @@ export const pubSubManager = new PubSubManager<MyEvent>();
 export const PubSubProvider = ({ children }: React.PropsWithChildren) => {
   React.useEffect(() => {
     const handlers: EventHandlersMap<MyEvent> = {
-      DELETE_USER: [
-        (event) => {
-          console.log('지우기 유저', event);
+      CREATE_USER: [
+        (e) => {
+          console.group(' 😉 pub-sub example start');
+          console.log(e);
+          console.log('여기서 뭔가를 하면 되겠네용');
+          console.groupEnd();
         },
       ],
     };
     pubSubManager.initiate(handlers);
+    return () => pubSubManager.initialize();
   }, []);
   return children;
 };
