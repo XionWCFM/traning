@@ -35,4 +35,12 @@ export type LogTypeCreator<
   } & AnotherObj;
 };
 
-
+export type DefaultLogType = LogTypeCreator<
+  string,
+  string,
+  string,
+  string,
+  string,
+  { type: string },
+  '_'
+>;
