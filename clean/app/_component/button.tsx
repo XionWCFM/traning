@@ -10,7 +10,10 @@ export const Button = (prop: ButtonProps) => {
   return (
     <button
       onClick={() => {
-        pubSubManager.publish({ type: 'CREATE_USER', userName: 'helloworld' });
+        pubSubManager.publish({
+          type: 'CREATE_USER',
+          userName: 'ㄴㅇㅁㅇㄴㅁㅇ',
+        });
       }}
       {...prop}
     >
