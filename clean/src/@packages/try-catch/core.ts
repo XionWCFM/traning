@@ -1,22 +1,10 @@
-export type SuccessStatus = "success";
-export type ErrorStatus = "error";
-
-export const tryCatch = <T = unknown, ErrorReturn = unknown>(
-  tryFunc: () => T,
-  catchDoing?: (error: unknown) => ErrorReturn,
-):
-  | { type: "error"; value: ErrorReturn | null }
-  | { type: "success"; value: T } => {
+function tryCatch<T, E extends Error, H>(
+  tryFn: () => T,
+  catchFn: (error: E) => H,
+): T | H {
   try {
-    return {
-      type: "success",
-      value: tryFunc(),
-    };
-  } catch (e) {
-    const result = catchDoing?.(e);
-    return {
-      type: "error",
-      value: result ?? null,
-    };
+    return tryFn();
+  } catch (error) {
+    return catchFn(error as E);
   }
-};
+}
