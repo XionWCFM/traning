@@ -1,18 +1,21 @@
-import { EventCreator, EventHandler, EventHandlersMap } from './type';
-
-export class PubSubManager<Event extends EventCreator<string, {}>> {
+import {
+  DefaultPubSubEvent,
+  PubSubEventHandler,
+  PubSubEventHandlersMaps,
+} from './type';
+export class PubSubManager<Event extends DefaultPubSubEvent> {
   private subscribers: {
-    [eventType in Event['type']]?: Array<EventHandler<Event>>;
+    [eventType in Event['type']]?: Array<PubSubEventHandler<Event>>;
   } = {};
 
-  subscribe(eventType: Event['type'], handler: EventHandler<Event>) {
+  subscribe(eventType: Event['type'], handler: PubSubEventHandler<Event>) {
     if (!this.subscribers[eventType]) {
       this.subscribers[eventType] = [];
     }
     this.subscribers[eventType]?.push(handler);
   }
 
-  unsubscribe(eventType: Event['type'], handler: EventHandler<Event>) {
+  unsubscribe(eventType: Event['type'], handler: PubSubEventHandler<Event>) {
     const handlers = this.subscribers[eventType];
     if (handlers) {
       this.subscribers[eventType] = handlers.filter((h) => h !== handler);
@@ -26,10 +29,10 @@ export class PubSubManager<Event extends EventCreator<string, {}>> {
     handlers.forEach((handler) => handler(event));
   }
 
-  initiate(handlerObject: EventHandlersMap<Event>) {
+  initiate(handlerObject: PubSubEventHandlersMaps<Event>) {
     const entries = Object.entries(handlerObject) as [
       Event['type'],
-      EventHandlersMap<Event>[Event['type']],
+      PubSubEventHandlersMaps<Event>[Event['type']],
     ][];
     entries.forEach(([eventType, handlers]) => {
       handlers?.forEach((handler) => {
