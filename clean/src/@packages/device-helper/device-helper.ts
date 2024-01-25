@@ -9,6 +9,9 @@ export class DeviceHelper {
   isClient(): boolean {
     return typeof window !== 'undefined';
   }
+  isServer(): boolean {
+    return typeof window === 'undefined';
+  }
   isIos(): boolean {
     if (this.isClient()) {
       return false;
@@ -30,7 +33,10 @@ export class DeviceHelper {
       !this.ios.test(navigator?.userAgent)
     );
   }
-  getDevice() {
+  getDevice(): 'server' | 'ios' | 'android' | 'web' | 'unknown' {
+    if (this.isServer()) {
+      return 'server';
+    }
     if (this.isIos()) {
       return 'ios';
     }

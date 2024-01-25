@@ -12,6 +12,7 @@ export type LogTypeCreator<
   at: At;
   target: Target;
   action: Action;
+  glue: Glue;
   eventName: `${Feature}${Glue}${Target}${Glue}${Action}`;
   eventNameTuple: readonly [Feature, Target, Action];
   eventPath: `${Feature}${Glue}${Page}${Glue}${At}${Glue}${Target}`;
@@ -25,7 +26,7 @@ export type LogTypeCreator<
     eventPath: `${Feature}${Glue}${Page}${Glue}${At}${Glue}${Target}`;
     eventTime: string;
     eventEnvironment: {
-      device: 'web' | 'server' | 'ios' | 'android' | 'unknown';
+      device: 'server' | 'ios' | 'android' | 'web' | 'unknown';
       environment: 'development' | 'production' | 'test';
     };
   } & AnotherObj;
