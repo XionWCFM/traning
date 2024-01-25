@@ -15,6 +15,11 @@ export type LogAtomCreator<
   eventNameTuple: readonly [Feature, Target, Action];
   eventPath: `${Feature}${Glue}${Page}${Glue}${At}${Glue}${Target}`;
   eventPathTuple: readonly [Feature, Page, At, Target];
+  props: { eventName: readonly [Feature, Target, Action] };
 };
 
-export type LogEventCreator<T> = {};
+export type LogEventCreator<T extends Record<string, any>> = T & {
+  type: string;
+  eventName: string;
+  eventPath: string;
+};
