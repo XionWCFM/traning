@@ -10,6 +10,7 @@ export const LoggerProvider = () => {
     const handler = (event: MyLogEvent['logEvent']) => {
       console.log('hi');
     };
+
     logger.subscribe('LOGGING_EVENT', handler);
     return () => logger.unsubscribe('LOGGING_EVENT', handler);
   }, []);
