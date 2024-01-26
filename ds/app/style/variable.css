@@ -1,0 +1,32 @@
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 4%;
+
+  --primary: 0 0% 9%;
+  --positive-foreground: 0 0% 100%;
+
+  --positive: 225 100% 60%;
+  --positive-foreground: 0 0% 100%;
+
+  --negative: 7 100% 67%;
+  --positive-foreground: 0 0% 100%;
+
+  --secondary: 218 20% 34%;
+  --positive-foreground: 0 0% 100%;
+
+  --radius: 10px;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --spacing: 4px;
+}
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+}
