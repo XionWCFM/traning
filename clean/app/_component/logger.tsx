@@ -5,11 +5,7 @@ import React from 'react';
 
 export const logger = new Logger<MyLogEvent>();
 
-export const LoggerProvider = ({
-  children,
-}: {
-  children?: React.ReactNode;
-}) => {
+export const LoggerProvider = () => {
   React.useEffect(() => {
     const handler = (event: MyLogEvent['logEvent']) => {
       console.log('hi');
@@ -17,5 +13,5 @@ export const LoggerProvider = ({
     logger.subscribe('LOGGING_EVENT', handler);
     return () => logger.unsubscribe('LOGGING_EVENT', handler);
   }, []);
-  return children;
+  return null;
 };
