@@ -11,7 +11,18 @@ const config: Config = {
     colors: XION_STYLE.colors,
     borderRadius: XION_STYLE.borderRadius,
     spacing: XION_STYLE.spacing,
-    extend: {},
+    fontSize: {
+      'title-sm': 'calc(var(--font-size) * 0.75)',
+      'title-md': 'calc(var(--font-size) * 1)',
+      'title-lg': 'calc(var(--font-size) * 1.5)',
+      'title-xl': 'calc(var(--font-size) * 2)',
+      'title-2xl': 'calc(var(--font-size) * 3)',
+      'content-sm': '',
+      
+    },
+    extend: {
+      minWidth: {},
+    },
   },
   plugins: [],
   darkMode: ['class'],

@@ -23,7 +23,8 @@ const borderRadius = {
   sm: 'var(--radius)',
   md: 'calc(var(--radius) * 2)',
   lg: 'calc(var(--radius) * 3)',
-  xl: '60px',
+  xl: 'calc(var(--radius) * 5)',
+  '2xl': 'calc(var(--radius) * 8)',
   full: '999px',
 } as const;
 
