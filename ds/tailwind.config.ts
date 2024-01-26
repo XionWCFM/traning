@@ -12,13 +12,16 @@ const config: Config = {
     borderRadius: XION_STYLE.borderRadius,
     spacing: XION_STYLE.spacing,
     fontSize: {
-      'title-sm': 'calc(var(--font-size) * 0.75)',
-      'title-md': 'calc(var(--font-size) * 1)',
-      'title-lg': 'calc(var(--font-size) * 1.5)',
-      'title-xl': 'calc(var(--font-size) * 2)',
-      'title-2xl': 'calc(var(--font-size) * 3)',
-      'content-sm': '',
-      
+      'header-1': 'calc(var(--font-size) * 2)',
+      'header-2': 'calc(var(--font-size) * 1.75)',
+      'sub-title-1': 'calc(var(--font-size) * 1.125)',
+      'sub-title-2': 'calc(var(--font-size) * 1)',
+      'sub-title-3': 'calc(var(--font-size) * 0.875)',
+      'sub-title-4': 'calc(var(--font-size) * 0.75)',
+      'body-1': 'calc(var(--font-size) * 1)',
+      'body-2': 'calc(var(--font-size) * 0.875)',
+      'caption-1': 'calc(var(--font-size) * 0.75)',
+      'caption-2': 'calc(var(--font-size) * 0.625)',
     },
     extend: {
       minWidth: {},
