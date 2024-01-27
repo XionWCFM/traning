@@ -25,12 +25,14 @@ const fetchExtend = xionFetch({
 
 export default function Home() {
   return (
-    <div className=" py-16 px-12">
+    <div className=" px-12 py-12">
+      <div className=" text-header-1 font-header-1 leading-header-1 text-foreground/30">
+        안녕하세요
+      </div>
       <button className=" px-10 w-2/5 py-2  bg-positive text-sub-title-1 text-positive-foreground  ">
         hello world
         <div className=" text-foreground/20 ">dsadsa </div>
       </button>
-      <div className=" w-16 h-16 bg-primary animate-in fade-in-40 delay-300 duration-300 animate-out fade-out-40 "></div>
     </div>
   );
 }

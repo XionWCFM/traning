@@ -1,22 +1,21 @@
 :root {
-  --spacing: 4px;
+  --spacing: 2px;
   --font-size: 1rem;
-  --scale: 8px;
 
   --background: 0 0% 100%;
   --foreground: 0 0% 4%;
-
-  --primary: 0 0% 9%;
-  --positive-foreground: 0 0% 100%;
 
   --positive: 225 100% 60%;
   --positive-foreground: 0 0% 100%;
 
   --negative: 7 100% 67%;
-  --positive-foreground: 0 0% 100%;
+  --negative-foreground: 0 0% 100%;
 
-  --secondary: 218 20% 34%;
-  --positive-foreground: 0 0% 100%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 100%;
+
+  --sub: 218 20% 34%;
+  --sub-foreground: 0 0% 100%;
 
   --radius: 4px;
 }
