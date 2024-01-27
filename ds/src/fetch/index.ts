@@ -70,5 +70,33 @@ const normalizeArgs = async (
 };
 
 const xionFetch =
-  () =>
-  async (...args: Parameters<typeof fetch>) => {};
+  (defaultOptions?: ReturnFetchDefaultOptions) =>
+  async (...args: Parameters<typeof fetch>): Promise<Response> => {
+    const defaultOptionAppliedArgs = applyDefaultOptions(
+      await normalizeArgs(...args),
+      defaultOptions,
+    );
+    const fetchProvided = defaultOptions?.fetch || fetch;
+    let requestInterceptorAppliedArgs: FetchArgs;
+    if (defaultOptions?.interceptors?.request) {
+      requestInterceptorAppliedArgs =
+        await defaultOptions.interceptors?.request?.(
+          defaultOptionAppliedArgs,
+          fetchProvided,
+        );
+    } else {
+      requestInterceptorAppliedArgs = defaultOptionAppliedArgs;
+    }
+
+    const response = await fetchProvided(...requestInterceptorAppliedArgs);
+
+    return (
+      defaultOptions?.interceptors?.response?.(
+        response,
+        requestInterceptorAppliedArgs,
+        fetchProvided,
+      ) || response
+    );
+  };
+
+export default xionFetch;
