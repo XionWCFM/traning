@@ -14,8 +14,8 @@
   --primary: 0 0% 9%;
   --primary-foreground: 0 0% 100%;
 
-  --sub: 218 20% 34%;
-  --sub-foreground: 0 0% 100%;
+  --secondary: 218 20% 34%;
+  --secondary-foreground: 0 0% 100%;
 
   --radius: 4px;
 }
