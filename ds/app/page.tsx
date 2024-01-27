@@ -28,8 +28,9 @@ export default function Home() {
     <div className=" py-16 px-12">
       <button className=" px-10 w-2/5 py-2  bg-positive text-sub-title-1 text-positive-foreground  ">
         hello world
-        <div className=" text-foreground/20">dsadsa </div>
+        <div className=" text-foreground/20 ">dsadsa </div>
       </button>
+      <div className=" w-16 h-16 bg-primary animate-in fade-in-40 delay-300 duration-300 animate-out fade-out-40 "></div>
     </div>
   );
 }

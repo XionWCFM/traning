@@ -32,7 +32,7 @@ const applyDefaultOptions = (
   return [inputToReturn, { ...requestInit, headers }];
 };
 
-const mergeRequestObjectWithRequestInit = (
+const mergeRequestObjectWithRequestInit = async (
   request: Request,
   requestInit?: RequestInit,
 ): Promise<RequestInit> => {
