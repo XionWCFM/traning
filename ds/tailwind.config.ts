@@ -27,7 +27,7 @@ const config: Config = {
       minWidth: {},
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
   darkMode: ['class'],
 };
 export default config;
