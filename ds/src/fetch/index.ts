@@ -1,10 +1,19 @@
 export type FetchArgs = [string | URL, RequestInit | undefined];
+export type XionFetch = typeof xionFetch;
 export type ReturnFetchDefaultOptions = {
-  fetch?: any;
+  fetch?: ReturnType<XionFetch>;
   baseUrl?: string | URL;
   headers?: HeadersInit;
   interceptors?: {
-    request?: () => Promise<any>;
+    request?: (
+      reqeustArgs: FetchArgs,
+      fetch: NonNullable<ReturnFetchDefaultOptions['fetch']>,
+    ) => Promise<FetchArgs>;
+    response?: (
+      response: Response,
+      requestArgs: FetchArgs,
+      fetch: NonNullable<ReturnFetchDefaultOptions['fetch']>,
+    ) => Promise<Response>;
   };
 };
 
@@ -28,5 +37,38 @@ const mergeRequestObjectWithRequestInit = (
   requestInit?: RequestInit,
 ): Promise<RequestInit> => {
   const mergedRequest = new Request(request, requestInit);
-  
+  return new Response(mergedRequest.body).arrayBuffer().then((body) => ({
+    method: mergedRequest.method,
+    headers: mergedRequest.headers,
+    body: body,
+    referrer: mergedRequest.referrer,
+    referrerPolicy: mergedRequest.referrerPolicy,
+    mode: mergedRequest.mode,
+    credentials: mergedRequest.credentials,
+    cache: mergedRequest.cache,
+    redirect: mergedRequest.redirect,
+    integrity: mergedRequest.integrity,
+    keepalive: mergedRequest.keepalive,
+    signal: mergedRequest.signal,
+    window: requestInit?.window,
+  }));
 };
+
+const normalizeArgs = async (
+  ...args: Parameters<typeof fetch>
+): Promise<FetchArgs> => {
+  let input: string | URL;
+  let requestInit: RequestInit | undefined;
+  if (args[0] instanceof Request) {
+    input = args[0].url;
+    requestInit = await mergeRequestObjectWithRequestInit(args[0], args[1]);
+  } else {
+    input = args[0];
+    requestInit = args[1];
+  }
+  return [input, requestInit];
+};
+
+const xionFetch =
+  () =>
+  async (...args: Parameters<typeof fetch>) => {};
