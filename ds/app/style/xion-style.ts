@@ -45,8 +45,48 @@ const spacing = {
   '1024': 'calc(var(--spacing) * 512)',
 } as const;
 
+const fontSize = {
+  'header-1': 'calc(var(--font-size) * 2)',
+  'header-2': 'calc(var(--font-size) * 1.75)',
+  'sub-title-1': 'calc(var(--font-size) * 1.125)',
+  'sub-title-2': 'calc(var(--font-size) * 1)',
+  'sub-title-3': 'calc(var(--font-size) * 0.875)',
+  'sub-title-4': 'calc(var(--font-size) * 0.75)',
+  'body-1': 'calc(var(--font-size) * 1)',
+  'body-2': 'calc(var(--font-size) * 0.875)',
+  'caption-1': 'calc(var(--font-size) * 0.75)',
+  'caption-2': 'calc(var(--font-size) * 0.625)',
+} as const;
+const fontWeight = {
+  'header-1': '700',
+  'header-2': '700',
+  'sub-title-1': '600',
+  'sub-title-2': '600',
+  'sub-title-3': '600',
+  'sub-title-4': '600',
+  'body-1': '500',
+  'body-2': '500',
+  'caption-1': '500',
+  'caption-2': '400',
+} as const;
+const lineHeight = {
+  'header-1': '128%',
+  'header-2': '133%',
+  'sub-title-1': '133%',
+  'sub-title-2': '150%',
+  'sub-title-3': '143%',
+  'sub-title-4': '150%',
+  'body-1': '150%',
+  'body-2': '143%',
+  'caption-1': '150%',
+  'caption-2': '120%',
+} as const;
+
 export const XION_STYLE = {
   colors,
   borderRadius,
   spacing,
+  fontSize,
+  fontWeight,
+  lineHeight,
 };
