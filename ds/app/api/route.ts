@@ -13,3 +13,14 @@ export const GET = (request: Request, response: Response) => {
     },
   );
 };
+
+export const POST = () => {
+  return Response.json(
+    {
+      data: 'helloworld',
+    },
+    {
+      status: 400,
+    },
+  );
+};

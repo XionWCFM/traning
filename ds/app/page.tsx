@@ -1,8 +1,6 @@
 'use client';
-import Modal from '@/src/ds/dialog';
 import xionFetch from '@/src/fetch';
 import AnimationWrapper from '@/style/animate/AnimationWrapper';
-import ArrowIcon from '@/style/icon/arrow-Icon';
 import React from 'react';
 const fetchExtend = xionFetch({
   baseUrl: '',
@@ -19,7 +17,10 @@ const fetchExtend = xionFetch({
     response: async (response) => {
       console.log('response intercepting', response.status);
       if (response.status >= 400) {
-        throw await response.text().then(Error);
+        throw await response.text().then((res) => {
+          Error(res);
+          console.log(res);
+        });
       }
       return response;
     },
@@ -30,6 +31,15 @@ export default function Home() {
   const [hi, setHi] = React.useState(false);
   return (
     <div className=" px-12 py-12">
+      <button
+        onClick={() => {
+          fetchExtend('/api', {
+            method: 'POST',
+          });
+        }}
+      >
+        누르면 요청보내기
+      </button>
       <h2 className=" text-header-1  text-header font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
