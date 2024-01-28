@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-import { XION_STYLE } from './app/style/xion-style';
+import { XION_STYLE } from './style/xion-style';
 
 const config: Config = {
   content: [

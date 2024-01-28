@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 @layer base {
-  @import './style/variable.css';
+  @import './variable.css';
 }

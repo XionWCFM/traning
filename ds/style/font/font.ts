@@ -1,7 +1,9 @@
-export const XION_FONT = {
+import localFont from 'next/font/local';
+
+export const XION_NEXT_FONT = localFont({
   src: [
     {
-      path: './SUIT-light.woff2',
+      path: './SUIT-Light.woff2',
       weight: '300',
       style: 'normal',
     },
@@ -30,5 +32,6 @@ export const XION_FONT = {
       weight: '800',
       style: 'normal',
     },
-  ] as const,
-};
+  ],
+  display: 'swap',
+});
