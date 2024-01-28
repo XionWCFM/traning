@@ -26,6 +26,22 @@ const fetchExtend = xionFetch({
 export default function Home() {
   return (
     <div className=" px-12 py-12">
+      <div className=" text-positive border border-positive">
+        <div className="">gds</div>
+      </div>
+      <div className=" text-secondary-foreground bg-secondary">세컨더리</div>
+      <div className=" text-primary-foreground bg-primary-muted">
+        프라이머리 뮤티드
+      </div>
+      <div className=" text-primary-foreground bg-primary-hover">
+        프라이머리 호버
+      </div>
+      <div className=" text-primary-foreground bg-primary-accent">
+        프라이머리 호버
+      </div>
+      <div className=" text-primary-foreground bg-primary">프라이머리</div>
+      <div className=" text-negative-foreground bg-negative">네거티브</div>
+
       <div className=" text-header-1 font-header-1 leading-header-1 text-foreground/30">
         안녕하세요
       </div>

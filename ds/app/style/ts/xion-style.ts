@@ -1,9 +1,16 @@
 const colors = {
+  inherit: 'inherit',
+  current: 'currentColor',
+  transparent: 'tranparent',
   background: 'hsl(var(--background))',
   foreground: 'hsl(var(--foreground))',
+
   primary: {
     DEFAULT: 'hsl(var(--primary))',
-    foreground: 'hsl(var(--primary-foreground))',
+    foreground: 'hsl(var(--primary-foreground) / 90%)',
+    muted: 'hsl(var(--primary) / 40%)',
+    hover: 'hsl(var(--primary) / 90%)',
+    accent: 'hsl(var(--primary) / 80%)',
   },
   secondary: {
     DEFAULT: 'hsl(var(--secondary))',
@@ -58,7 +65,7 @@ const fontSize = {
   'caption-2': 'calc(var(--font-size) * 0.625)',
 } as const;
 const fontWeight = {
-  'header-1': '700',
+  'header-1': '800',
   'header-2': '700',
   'sub-title-1': '600',
   'sub-title-2': '600',
