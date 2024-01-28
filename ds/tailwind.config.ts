@@ -14,9 +14,8 @@ const config: Config = {
     fontSize: XION_STYLE.fontSize,
     fontWeight: XION_STYLE.fontWeight,
     lineHeight: XION_STYLE.lineHeight,
-    extend: {
-      minWidth: {},
-    },
+    boxShadow: XION_STYLE.boxShadow,
+    extend: {},
   },
   plugins: [require('tailwindcss-animate')],
   darkMode: ['class'],

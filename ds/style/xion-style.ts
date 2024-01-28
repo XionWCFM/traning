@@ -129,7 +129,12 @@ const lineHeight = {
   'caption-2': '120%',
 } as const;
 
-const boxShadow = {} as const;
+const boxShadow = {
+  xs: 'rgba(0, 0, 0, 0.16) 0px 1px 4px',
+  sm: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
+  md: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+  lg: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px',
+} as const;
 
 export const XION_STYLE = {
   colors,
