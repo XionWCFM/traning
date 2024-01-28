@@ -30,7 +30,7 @@ export default function Home() {
   const [hi, setHi] = React.useState(false);
   return (
     <div className=" px-12 py-12">
-      <h2 className=" text-header-1 text-header font-header-1 leading-header-1">
+      <h2 className=" text-header-1  text-header font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
       <h2 className=" text-header-1 text-header-success font-header-1 leading-header-1">
@@ -45,7 +45,8 @@ export default function Home() {
       <div className=" text-primary-foreground bg-primary shadow-xs">
         안녕하세요 프라미어리
       </div>
-
+      <div className=" center-fixed h-64 w-64 bg-primary"></div>
+      <div className="h-64 w-64 bg-primary"></div>
       <button className=" px-10 w-2/5 py-2  bg-positive text-sub-title-1 text-positive-foreground  ">
         hello world
         <div className=" text-foreground/20  ">dsadsa </div>
@@ -62,6 +63,11 @@ export default function Home() {
           안
         </div>
       </AnimationWrapper>
+      <div className=" h-64 w-64 bg-primary top-fixed ">gfsfa</div>
+      <div className=" h-64 w-64 bg-primary left-fixed ">gfsfa</div>
+      <div className=" h-64 w-64 bg-primary right-fixed ">gfsfa</div>
+      <div className=" h-64 w-64 bg-primary bottom-fixed ">gfsfa</div>
+
       <div className=" "></div>
     </div>
   );
