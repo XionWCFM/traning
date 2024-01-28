@@ -1,6 +1,8 @@
 'use client';
 import Modal from '@/src/ds/dialog';
 import xionFetch from '@/src/fetch';
+import AnimationWrapper from '@/style/animate/AnimationWrapper';
+import ArrowIcon from '@/style/icon/arrow-Icon';
 import React from 'react';
 const fetchExtend = xionFetch({
   baseUrl: '',
@@ -43,14 +45,24 @@ export default function Home() {
       <div className=" text-primary-foreground bg-primary shadow-xs">
         안녕하세요 프라미어리
       </div>
-      <div className=" h-64 w-64  shadow-xs rounded-full my-12 text-primary flex justify-center items-center">
-        안
-      </div>
+
       <button className=" px-10 w-2/5 py-2  bg-positive text-sub-title-1 text-positive-foreground  ">
         hello world
-        <div className=" text-foreground/20 ">dsadsa </div>
+        <div className=" text-foreground/20  ">dsadsa </div>
       </button>
       <button onClick={() => setHi((s) => !s)}>누르면</button>
+      <AnimationWrapper
+        isOpen={hi}
+        duration={300}
+        direction="bottom"
+        type="slide"
+        className=" fixed z-30  left-0 top-[50%]"
+      >
+        <div className=" h-64  center w-64 shadow-xs rounded-full mx-12 text-primary flex justify-center items-center">
+          안
+        </div>
+      </AnimationWrapper>
+      <div className=" "></div>
     </div>
   );
 }

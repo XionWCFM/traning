@@ -26,39 +26,39 @@ interface FadeAnimationProps {
 }
 
 interface PopAnimationProps {
-  type: 'pop';
+  type: 'slide';
   direction: 'left' | 'right' | 'top' | 'bottom';
   duration: number;
   children?: React.ReactNode;
   isOpen: boolean;
+  className?: string;
 }
 
 const AnimationWrapper = (
-  {
-    type,
-    direction,
-    duration,
-    isOpen,
-    children,
-  }: FadeAnimationProps | PopAnimationProps,
+  { type, direction, duration, isOpen, children, className }: PopAnimationProps,
   ref: React.Ref<HTMLDivElement>,
 ) => {
+  let varaint;
+  switch (type) {
+    case 'slide':
+  }
   return (
     <AnimatePresence>
       {isOpen ? (
         <motion.div
+          className={className}
           initial={{
-            x: 0,
+            x: '-100%',
           }}
           animate={{
-            x: 50,
+            x: 0,
           }}
           exit={{
-            x: 0,
+            x: '-100%',
           }}
           ref={ref}
         >
-          <div className=" h-64 w-64 bg-primary"></div>
+          {children}
         </motion.div>
       ) : null}
     </AnimatePresence>

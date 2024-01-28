@@ -17,7 +17,7 @@ const config: Config = {
     boxShadow: XION_STYLE.boxShadow,
     extend: {},
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('./plugin')],
   darkMode: ['class'],
 };
 export default config;
