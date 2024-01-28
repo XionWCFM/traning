@@ -8,9 +8,6 @@ const colors = {
   primary: {
     DEFAULT: 'hsl(var(--primary))',
     foreground: 'hsl(var(--primary-foreground) / 90%)',
-    muted: 'hsl(var(--primary) / 40%)',
-    hover: 'hsl(var(--primary) / 90%)',
-    accent: 'hsl(var(--primary) / 80%)',
   },
   secondary: {
     DEFAULT: 'hsl(var(--secondary))',
@@ -24,14 +21,55 @@ const colors = {
     DEFAULT: 'hsl(var(--positive))',
     foreground: 'hsl(var(--positive-foreground))',
   },
+
+  ring: {
+    DEFAULT: 'hsl(var(--background) / 70%)',
+    success: 'hsl(var(--positive) / 70%)',
+    danger: 'hsl(var(--negative) / 70%)',
+    muted: 'hsl(var(--background) / 30%)',
+    accent: 'hsl(var(--background) / 80%)',
+  },
+
+  header: {
+    DEFAULT: 'hsl(var(--foreground) / 70%)',
+    success: 'hsl(var(--positive) / 70%)',
+    danger: 'hsl(var(--negative) / 70%)',
+    accent: 'hsl(var(--foreground) / 80%)',
+  },
+
+  caption: {
+    DEFAULT: 'hsl(var(--foreground) / 50%)',
+    success: 'hsl(var(--positive) / 60%)',
+    danger: 'hsl(var(--negative) / 60%)',
+    muted: 'hsl(var(--foreground) / 20%)',
+    accent: 'hsl(var(--foreground) / 70%)',
+  },
+
+  body: {
+    DEFAULT: 'hsl(var(--foreground) / 50%)',
+    success: 'hsl(var(--positive) / 60%)',
+    danger: 'hsl(var(--negative) / 60%)',
+    muted: 'hsl(var(--foreground) / 20%)',
+    accent: 'hsl(var(--foreground) / 70%)',
+  },
+
+  'sub-title': {
+    DEFAULT: 'hsl(var(--foreground) / 50%)',
+    success: 'hsl(var(--positive) / 60%)',
+    danger: 'hsl(var(--negative) / 60%)',
+    muted: 'hsl(var(--foreground) / 20%)',
+    accent: 'hsl(var(--foreground) / 70%)',
+  },
 } as const;
 
 const borderRadius = {
-  sm: 'var(--radius)',
-  md: 'calc(var(--radius) * 2)',
-  lg: 'calc(var(--radius) * 3)',
-  xl: 'calc(var(--radius) * 5)',
+  xs: 'var(--radius)',
+  sm: 'calc(var(--radius) * 2)',
+  md: 'calc(var(--radius) * 3)',
+  lg: 'calc(var(--radius) * 4)',
+  xl: 'calc(var(--radius) * 6)',
   '2xl': 'calc(var(--radius) * 8)',
+  '3xl': 'calc(var(--radius) * 10)',
   full: '999px',
 } as const;
 
@@ -64,6 +102,7 @@ const fontSize = {
   'caption-1': 'calc(var(--font-size) * 0.75)',
   'caption-2': 'calc(var(--font-size) * 0.625)',
 } as const;
+
 const fontWeight = {
   'header-1': '800',
   'header-2': '700',
@@ -76,6 +115,7 @@ const fontWeight = {
   'caption-1': '500',
   'caption-2': '400',
 } as const;
+
 const lineHeight = {
   'header-1': '128%',
   'header-2': '133%',
@@ -89,6 +129,8 @@ const lineHeight = {
   'caption-2': '120%',
 } as const;
 
+const boxShadow = {} as const;
+
 export const XION_STYLE = {
   colors,
   borderRadius,
@@ -96,4 +138,5 @@ export const XION_STYLE = {
   fontSize,
   fontWeight,
   lineHeight,
+  boxShadow,
 };
