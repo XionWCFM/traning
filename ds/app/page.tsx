@@ -1,8 +1,6 @@
 'use client';
 import xionFetch from '@/src/fetch';
-import AnimationWrapper from '@/style/animate/AnimationWrapper';
 import React from 'react';
-import { AnimatePresence } from 'framer-motion';
 const fetchExtend = xionFetch({
   baseUrl: '',
   headers: {
@@ -32,15 +30,12 @@ export default function Home() {
       <h2 className=" text-header-1 text-header font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
-
       <h2 className=" text-header-1 text-header-success font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
-
       <h2 className=" text-header-1 text-header-danger font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
-
       <h2 className=" text-header-1 text-header-accent font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
@@ -55,12 +50,16 @@ export default function Home() {
         <div className=" text-foreground/20 ">dsadsa </div>
       </button>
       <button onClick={() => setHi((s) => !s)}>누르면</button>
-      <AnimationWrapper
-        isOpen={hi}
-        direction={'bottom'}
-        type={'pop'}
-        duration={300}
-      />
+      <div
+        className={`
+        data-[state=true]:animate-in 
+        data-[state=false]:animate-out 
+        data-[state=false]:slide-out-to-top-full
+        data-[state=true]:slide-in-from-top-full
+        h-64 w-64 bg-primary
+        `}
+        data-state={hi}
+      ></div>
     </div>
   );
 }
