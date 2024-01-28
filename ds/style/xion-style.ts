@@ -24,41 +24,41 @@ const colors = {
 
   ring: {
     DEFAULT: 'hsl(var(--background) / 70%)',
-    success: 'hsl(var(--positive) / 70%)',
-    danger: 'hsl(var(--negative) / 70%)',
+    success: 'hsl(var(--positive) / 100%)',
+    danger: 'hsl(var(--negative) / 100%)',
     muted: 'hsl(var(--background) / 30%)',
     accent: 'hsl(var(--background) / 80%)',
   },
 
   header: {
     DEFAULT: 'hsl(var(--foreground) / 70%)',
-    success: 'hsl(var(--positive) / 70%)',
-    danger: 'hsl(var(--negative) / 70%)',
+    success: 'hsl(var(--positive) / 100%)',
+    danger: 'hsl(var(--negative) / 100%)',
     accent: 'hsl(var(--foreground) / 80%)',
   },
 
   caption: {
-    DEFAULT: 'hsl(var(--foreground) / 50%)',
-    success: 'hsl(var(--positive) / 60%)',
-    danger: 'hsl(var(--negative) / 60%)',
-    muted: 'hsl(var(--foreground) / 20%)',
-    accent: 'hsl(var(--foreground) / 70%)',
+    DEFAULT: 'hsl(var(--foreground) / 60%)',
+    success: 'hsl(var(--positive) / 100%)',
+    danger: 'hsl(var(--negative) / 100%)',
+    muted: 'hsl(var(--foreground) / 30%)',
+    accent: 'hsl(var(--foreground) / 80%)',
   },
 
   body: {
-    DEFAULT: 'hsl(var(--foreground) / 50%)',
-    success: 'hsl(var(--positive) / 60%)',
-    danger: 'hsl(var(--negative) / 60%)',
-    muted: 'hsl(var(--foreground) / 20%)',
-    accent: 'hsl(var(--foreground) / 70%)',
+    DEFAULT: 'hsl(var(--foreground) / 60%)',
+    success: 'hsl(var(--positive) / 100%)',
+    danger: 'hsl(var(--negative) / 100%)',
+    muted: 'hsl(var(--foreground) / 30%)',
+    accent: 'hsl(var(--foreground) / 80%)',
   },
 
   'sub-title': {
-    DEFAULT: 'hsl(var(--foreground) / 50%)',
-    success: 'hsl(var(--positive) / 60%)',
-    danger: 'hsl(var(--negative) / 60%)',
-    muted: 'hsl(var(--foreground) / 20%)',
-    accent: 'hsl(var(--foreground) / 70%)',
+    DEFAULT: 'hsl(var(--foreground) / 60%)',
+    success: 'hsl(var(--positive) / 100%)',
+    danger: 'hsl(var(--negative) / 100%)',
+    muted: 'hsl(var(--foreground) / 30%)',
+    accent: 'hsl(var(--foreground) / 80%)',
   },
 } as const;
 

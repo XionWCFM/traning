@@ -41,7 +41,9 @@ export default function Home() {
       <h2 className=" text-header-1 text-header-accent font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
-
+      <div className=" text-primary-foreground bg-primary">
+        안녕하세요 프라미어리
+      </div>
       <button className=" px-10 w-2/5 py-2  bg-positive text-sub-title-1 text-positive-foreground  ">
         hello world
         <div className=" text-foreground/20 ">dsadsa </div>
