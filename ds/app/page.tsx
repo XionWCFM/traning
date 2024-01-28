@@ -44,6 +44,9 @@ export default function Home() {
       <div className=" text-primary-foreground bg-primary">
         안녕하세요 프라미어리
       </div>
+      <div className=" h-64 w-64 ring ring-primary rounded-full my-12 text-primary flex justify-center items-center">
+        안
+      </div>
       <button className=" px-10 w-2/5 py-2  bg-positive text-sub-title-1 text-positive-foreground  ">
         hello world
         <div className=" text-foreground/20 ">dsadsa </div>
