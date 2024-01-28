@@ -1,4 +1,5 @@
 'use client';
+import Modal from '@/src/ds/dialog';
 import xionFetch from '@/src/fetch';
 import React from 'react';
 const fetchExtend = xionFetch({
@@ -50,16 +51,6 @@ export default function Home() {
         <div className=" text-foreground/20 ">dsadsa </div>
       </button>
       <button onClick={() => setHi((s) => !s)}>누르면</button>
-      <div
-        className={`
-        data-[state=true]:animate-in 
-        data-[state=false]:animate-out 
-        data-[state=false]:slide-out-to-top-full
-        data-[state=true]:slide-in-from-top-full
-        h-64 w-64 bg-primary
-        `}
-        data-state={hi}
-      ></div>
     </div>
   );
 }

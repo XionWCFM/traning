@@ -43,34 +43,6 @@ const AnimationWrapper = (
   }: FadeAnimationProps | PopAnimationProps,
   ref: React.Ref<HTMLDivElement>,
 ) => {
-  const fadeVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration },
-    },
-  };
-  const popVariants = {
-    hidden: {
-      x: type === 'pop' ? directionToValue(direction ?? 'top') : 0,
-      y: type === 'pop' ? directionToValue(direction ?? 'top') : 0,
-    },
-    visible: {
-      x: 0,
-      y: 0,
-      transition: { duration },
-    },
-    exit: {
-      x: type === 'pop' ? directionToValue(direction ?? 'top') : 0,
-      y: type === 'pop' ? directionToValue(direction ?? 'top') : 0,
-      transition: { duration },
-    },
-  };
-  const variants = type === 'fade' ? fadeVariants : popVariants;
   return (
     <AnimatePresence>
       {isOpen ? (

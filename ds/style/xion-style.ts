@@ -22,6 +22,14 @@ const colors = {
     foreground: 'hsl(var(--positive-foreground))',
   },
 
+  white: {
+    DEFAULT: 'hsl(var(--white))',
+  },
+
+  neutral: {
+    DEFAULT: 'hsl(var(--neutral))',
+  },
+
   ring: {
     DEFAULT: 'hsl(var(--background) / 70%)',
     success: 'hsl(var(--positive) / 100%)',
@@ -74,6 +82,7 @@ const borderRadius = {
 } as const;
 
 const spacing = {
+  '0': '0px',
   '2': 'var(--spacing)',
   '4': 'calc(var(--spacing) * 2)',
   '6': 'calc(var(--spacing) * 3)',
@@ -88,6 +97,9 @@ const spacing = {
   '256': 'calc(var(--spacing) * 128)',
   '512': 'calc(var(--spacing) * 256)',
   '1024': 'calc(var(--spacing) * 512)',
+  '1/3': '33.3%',
+  half: '50%',
+  full: '100%',
 } as const;
 
 const fontSize = {
