@@ -1,6 +1,8 @@
 'use client';
 import xionFetch from '@/src/fetch';
-
+import AnimationWrapper from '@/style/animate/AnimationWrapper';
+import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 const fetchExtend = xionFetch({
   baseUrl: '',
   headers: {
@@ -24,6 +26,7 @@ const fetchExtend = xionFetch({
 });
 
 export default function Home() {
+  const [hi, setHi] = React.useState(false);
   return (
     <div className=" px-12 py-12">
       <h2 className=" text-header-1 text-header font-header-1 leading-header-1">
@@ -51,6 +54,13 @@ export default function Home() {
         hello world
         <div className=" text-foreground/20 ">dsadsa </div>
       </button>
+      <button onClick={() => setHi((s) => !s)}>누르면</button>
+      <AnimationWrapper
+        isOpen={hi}
+        direction={'bottom'}
+        type={'pop'}
+        duration={300}
+      />
     </div>
   );
 }
