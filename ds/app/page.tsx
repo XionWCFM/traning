@@ -40,6 +40,9 @@ export default function Home() {
       >
         누르면 요청보내기
       </button>
+      <div className=" text-header-1 font-header-1 leading-header-1 text-color-primary">
+        안녕하세요
+      </div>
       <h2 className=" text-header-1  text-header font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
