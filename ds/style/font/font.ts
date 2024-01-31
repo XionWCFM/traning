@@ -27,11 +27,6 @@ export const XION_NEXT_FONT = localFont({
       weight: '700',
       style: 'normal',
     },
-    {
-      path: './SUIT-ExtraBold.woff2',
-      weight: '800',
-      style: 'normal',
-    },
   ],
   display: 'swap',
 });

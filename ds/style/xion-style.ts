@@ -92,7 +92,7 @@ const fontSize = {
 } as const;
 
 const fontWeight = {
-  'header-1': '800',
+  'header-1': '700',
   'header-2': '700',
   'sub-title-1': '600',
   'sub-title-2': '600',
