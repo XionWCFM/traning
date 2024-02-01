@@ -1,6 +1,5 @@
 import type { Config } from 'tailwindcss';
 import { XION_STYLE } from './style/xion-style';
-import { xionPlugin } from './xion-plugin';
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -17,7 +16,10 @@ const config: Config = {
     boxShadow: XION_STYLE.boxShadow,
     extend: {},
   },
-  plugins: [require('tailwindcss-animate'), xionPlugin],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@xionhub/tailwind-plugin'),
+  ],
   darkMode: ['class'],
 };
 export default config;
