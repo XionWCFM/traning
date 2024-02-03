@@ -8,10 +8,10 @@
   --neutral: 0 0% 4%;
   --white: 0 0% 100%;
 
-  --positive: 225 70% 60%;
+  --positive: 225 100% 60%;
   --positive-foreground: 0 0% 100%;
 
-  --negative: 7 70% 67%;
+  --negative: 0 100% 53%;
   --negative-foreground: 0 0% 100%;
 
   --primary: 120 90 40;
@@ -29,10 +29,10 @@
   --neutral: 0 0% 4%;
   --white: 0 0% 100%;
 
-  --positive: 225 70% 60%;
+  --positive: 225 100% 60%;
   --positive-foreground: 0 0% 100%;
 
-  --negative: 7 70% 67%;
+  --negative: 0 100% 53%;
   --negative-foreground: 0 0% 100%;
 
   --primary: 0 0% 6%;

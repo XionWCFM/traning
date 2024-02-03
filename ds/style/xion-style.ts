@@ -21,11 +21,9 @@ const colors = {
     DEFAULT: 'hsl(var(--positive))',
     foreground: 'hsl(var(--positive-foreground))',
   },
-
   white: {
     DEFAULT: 'hsl(var(--white))',
   },
-
   neutral: {
     DEFAULT: 'hsl(var(--neutral))',
   },
@@ -41,9 +39,9 @@ const colors = {
     'white-accent': 'hsl(var(--white) /90%)',
     white: 'hsl(var(--white) /70%)',
     'success-accent': 'hsl(var(--positive) / 100%)',
-    success: 'hsl(var(--positive) / 80%)',
+    success: 'hsl(var(--positive) / 100%)',
     'danger-accent': 'hsl(var(--negative) / 100%)',
-    danger: 'hsl(var(--negative) / 80%)',
+    danger: 'hsl(var(--negative) / 100%)',
     muted: 'hsl(var(--background) / 30%)',
   },
 } as const;

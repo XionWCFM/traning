@@ -47,6 +47,12 @@ export default function Home() {
       <div className=" text-header-1 font-header-1 leading-header-1 text-color-danger">
         안녕하세요
       </div>
+      <div className=" text-header-1 font-header-1 leading-header-1 text-color-foreground-cloudy">
+        안녕하세요
+      </div>
+      <div className=" text-header-1 font-header-1 leading-header-1 text-color-success">
+        안녕하세요
+      </div>
       <h2 className=" text-header-1  text-header font-header-1 leading-header-1">
         안녕하세요 header1
       </h2>
