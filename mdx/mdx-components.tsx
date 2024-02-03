@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 import './style.css';
-import Heading from './components/Heading';
+import Heading from './components/heading';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
