@@ -11,7 +11,7 @@
   "dependencies": {
     "@xionhub/assert": "^0.0.2",
     "@xionhub/device": "^0.0.1",
-    "@xionhub/funnel": "^0.0.3",
+    "@xionhub/funnel": "^0.1.0",
     "@xionhub/pubsub": "^0.0.1",
     "@xionhub/react-hook": "^0.0.23",
     "@xionhub/tailwind-plugin": "^0.0.5",
