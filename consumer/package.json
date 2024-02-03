@@ -1,0 +1,36 @@
+{
+  "name": "consumer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@xionhub/assert": "^0.0.2",
+    "@xionhub/device": "^0.0.1",
+    "@xionhub/funnel": "^0.0.3",
+    "@xionhub/pubsub": "^0.0.1",
+    "@xionhub/react-hook": "^0.0.23",
+    "@xionhub/tailwind-plugin": "^0.0.5",
+    "@xionhub/token": "^0.0.8",
+    "@xionhub/util": "^0.0.10",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@xionhub/logger": "^0.0.2",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
