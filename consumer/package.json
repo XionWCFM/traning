@@ -15,7 +15,7 @@
     "@xionhub/pubsub": "^0.0.1",
     "@xionhub/react-hook": "^0.0.23",
     "@xionhub/tailwind-plugin": "^0.0.5",
-    "@xionhub/token": "^0.0.8",
+    "@xionhub/token": "^0.1.1",
     "@xionhub/util": "^0.0.10",
     "next": "14.1.0",
     "react": "^18",

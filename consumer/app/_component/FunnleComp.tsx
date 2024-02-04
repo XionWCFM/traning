@@ -7,6 +7,7 @@ const FunnleComp = ({}: FunnleCompProps) => {
   return (
     <div>
       <button
+        className=" text-color-danger-accent text-header-1 font-header-1 leading-header-1"
         onClick={() => {
           console.log(DeviceHelper.getDevice());
           console.log(DeviceHelper.isClient());
