@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import { XION_STYLE } from '@xionhub/token';
+import xionPlugin from '@xionhub/tailwind-plugin';
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,6 +11,6 @@ const config: Config = {
     ...XION_STYLE,
     extend: {},
   },
-  plugins: [],
+  plugins: [xionPlugin],
 };
 export default config;
